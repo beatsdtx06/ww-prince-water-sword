@@ -1,0 +1,31 @@
+{
+  "mods": [
+    {
+      "id": "ww-prince-water-steam-visuals",
+      "name": "WW Prince and Water Sword - Visuals (Steam)",
+      "author": "Local mod project",
+      "version": "0.3.0-rc4",
+      "description": "Original Steam visual edition. WW Prince, separate hair, medallion and Water Sword appearance. Native damage and story weapon progression; no boss aura or opening grant. Requires standard Mod Manager large asset support. No custom runtime DLL bundled.",
+      "file": "WW-Prince-Water-Sword-Steam-Visuals-0.3.0-rc4.jtmod",
+      "game": "T2T",
+      "type": "mod",
+      "targets": "classic",
+      "size": 3522303,
+      "sha256": "d64f11376513483c55010acc5298d6e19953d970ed6e6f0aa725afd0f816dc00",
+      "image": "steam-gameplay.jpg"
+    },
+    {
+      "id": "ww-prince-water-openjade-full",
+      "name": "WW Prince and Water Sword - Full (OpenJade)",
+      "author": "Local mod project",
+      "version": "0.3.0-rc3",
+      "description": "OpenJade 0.4.1 only. WW Prince, separate hair and medallion, Water Sword, enhanced damage, boss-only blue aura and opening equip. No custom runtime DLL. Do not install this edition on original Steam.",
+      "file": "WW-Prince-Water-Sword-OpenJade-Full-0.3.0-rc3.jtmod",
+      "game": "T2T",
+      "type": "mod",
+      "targets": "openjade",
+      "size": 8969597,
+      "sha256": "7be6f95469849f71ffcac17c6d67ba4b5413a88f40f4eab41c74a4b42e379efb"
+    }
+  ]
+}
