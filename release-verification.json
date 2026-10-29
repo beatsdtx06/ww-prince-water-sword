@@ -2,7 +2,7 @@
   "version": "0.5.1",
   "date": "2026-10-29",
   "scope": "OpenJade only; Steam dropped by user request",
-  "status": "NATIVE_PACKAGE_AND_MANAGER_PASS_WITH_BOUNDED_RUNTIME_EVIDENCE",
+  "status": "NATIVE_PACKAGE_MANAGER_AND_USER_NEW_GAME_PASS",
   "artifact": "assets/WW-Prince-Model-Sword-Voice-0.5.1.jtmod",
   "artifactBytes": 11531685,
   "artifactSha256": "5cc760f951b17619b1a7b935c68bc2a2bcbeb48c6af3178df4f910e8037b0f71",
@@ -29,7 +29,8 @@
     "privateInstalledNativeBankAndStreamExact": "PASS",
     "otherSoundAssetsUnchanged": 164,
     "nativeManagerApplyRestoreReapply": "PASS",
-    "noPostApplyHelperFolder": "PASS"
+    "noPostApplyHelperFolder": "PASS",
+    "freshNewGameWaterSwordUserConfirmation": "PASS"
   },
   "manager": {
     "version": "2.1.2",
@@ -51,13 +52,13 @@
     "versionCorrection": "Earlier 0.4.1 labels came from stale Windows file metadata, not the runtime version",
     "observedNativeGameplay": "WW Prince and Water Sword visible in the disposable native-package game session",
     "releaseCandidateLaunch": "Reached profile selection and main menu through Mod Manager Launch, without running a helper",
-    "freshNewGameThisPass": "Not yet independently confirmed; accepted clean-start model/effects records retained byte-for-byte",
+    "freshNewGameThisPass": "User-confirmed in the disposable OpenJade test window on 2026-10-29: New Game works and the Water Sword is present. This is user-reported runtime evidence, not an independently observed automated test.",
     "newFullCampaignOrBossRetest": false
   },
   "limitations": [
     "93-line partial voice preview, not all game dialogue.",
     "Full audio decoding is not subjective in-game playback of every line.",
-    "Fresh New Game, all boss effects and a full campaign were not newly replayed in this release pass.",
+    "All boss effects and a full campaign were not newly replayed in this release pass.",
     "Original reported six-mod crash stack is not claimed diagnosed or qualified; use this package without overlapping model/audio mods.",
     "Unknown languages, engine revisions and arbitrary mod stacks are unsupported.",
     "Old helper-owned external changes require legacy recovery before changing Mod Manager selection."
