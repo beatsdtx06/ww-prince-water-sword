@@ -1,40 +1,42 @@
 # Warrior Within Prince and Water Sword for The Two Thrones
 
-Two editions prepared by **beatsdtx06**. Choose the edition matching your game.
+Version 0.4.0 fixes clean installations: the Water Sword is now equipped from New Game in both supported editions instead of only appearing after the game supplies a primary weapon.
 
-| Edition | Supported target | Features |
+| Edition | Target | Included behavior |
 | --- | --- | --- |
-| Steam Visuals 0.3.0-rc4 | Original Steam release, with PoP Mod Manager's built-in large asset support | Warrior Within Prince, separate hair, chest medallion, Water Sword appearance and accepted visual animations. Normal game damage and story weapon progression. |
-| OpenJade Full 0.3.0-rc3 | OpenJade 0.4.1 | Prince model, persistent right-hand Water Sword, enhanced damage and boss-only blue aura. |
+| Steam Clean Start | Original Steam release | Warrior Within Prince, separate hair, medallion and Water Sword from New Game; normal damage and story progression. |
+| OpenJade Clean Start | OpenJade 0.4.1 | Warrior Within Prince, persistent Water Sword from New Game, enhanced damage and boss-only blue aura. |
 
-**Steam Visuals has no enhanced damage, boss aura, or sword during the unarmed opening.** Do not install both editions together. OpenJade Full does not support the original Steam executable.
+Do not install both editions together.
 
-## Install
+## Steam installation
 
-1. Back up your saves and connect your game installation in [PoP Mod Manager](https://github.com/kaminoer/PoP-Mod-Manager).
-2. Add this repository in the manager's repository view, or download the matching `.jtmod` from this repository and import it locally.
-3. Select only the matching edition and apply. For Steam, accept **Enable & Apply** when the manager offers large asset support.
-4. Launch the original Steam game through Steam. For the full edition, use your separately installed OpenJade 0.4.1 engine.
+1. Back up your saves and connect the Steam installation in [PoP Mod Manager](https://github.com/kaminoer/PoP-Mod-Manager).
+2. Import `WW-Prince-Water-Sword-Steam-Clean-Start-0.4.0.jtmod` and apply it. Choose **Enable & Apply** when the manager offers large-asset support.
+3. Close the game and Mod Manager.
+4. Run `Install-Steam-Water-Sword.cmd`. The patcher accepts only the known Mod Manager executable, verifies its stock backup, and creates its own restorable backup before changing one interpreter setting.
+5. Launch the game through Steam and start a New Game.
 
-Our packages contain no custom runtime DLL, executable, launcher, Dahaka controller or Tab wheel. Steam's required large asset support is supplied by the manager itself; it modifies the executable and adds the manager's own support DLL. It is not bundled in our mod.
+If Steam is installed somewhere unusual, run PowerShell as follows:
+
+```powershell
+.\Install-Steam-Water-Sword.ps1 -Action Install -GameDirectory "D:\Path\To\Prince of Persia Two Thrones"
+```
+
+To remove the Steam edition, first run `Restore-Steam-Executable.cmd`, then use **Restore original** and disable **Large assets** in Mod Manager.
+
+## OpenJade installation
+
+Import and apply `WW-Prince-Water-Sword-OpenJade-Clean-Start-0.4.0.jtmod` to a stock archive with PoP Mod Manager, then launch it with your separately installed OpenJade 0.4.1 engine. No executable patch is used for OpenJade.
 
 ## Supported archive
 
-Stock `pop3.bf`: 497424384 bytes, SHA-256:
-`00134ea93ccf27f29ede40d3521439ca8f8c0d38bc02fdfd0d18042e7929b600`.
+Stock `pop3.bf`: 497424384 bytes; SHA-256 `00134ea93ccf27f29ede40d3521439ca8f8c0d38bc02fdfd0d18042e7929b600`.
 
-Other archives are unsupported. Do not bypass hash checks or combine overlapping character/weapon replacements.
+Other archives and overlapping character or weapon replacement mods are unsupported.
 
-## Remove
+## Verification
 
-Use **Restore original** in Mod Manager. To restore the original Steam executable too, disable **Large assets**. The manager may retain its support DLL and executable backup. Steam verification does not remove extra files. Keep backups and do not delete unknown files or personal saves.
+Both packages pass Mod Manager verification and apply cleanly to the stock archive. The OpenJade result is byte-identical to the previously observed clean-start build. The Steam helper was tested through install, status and restore against the supported Mod Manager executable and restored it byte-for-byte. See `SHA256SUMS.txt` and `CHANGELOG.md`.
 
-## Validation
-
-The corrected Steam edition was imported and applied through standard Mod Manager, launched through Steam, and loaded into gameplay. The Prince, hair and sheathed Water Sword were observed; the user confirmed the remaining front/drawn-sword visual check. Removal restored every one of the 191 Steam-owned files exactly. Test-generated files were preserved outside the installation, leaving zero extras.
-
-The full OpenJade edition retains previously accepted gameplay behavior. This is not a claim that every possible save, mod combination or campaign state has been retested. RC4 fixes a resource ordering error in the earlier Steam RC3 split; use RC4 for Steam.
-
-## Source and notices
-
-`source-code.zip` contains maintained build inputs and review materials. See [BUILD.md](BUILD.md) for reproducible package construction, and [NOTICES.md](NOTICES.md) for provenance. No game executable or full game archive is included. Checksums are listed in `SHA256SUMS.txt`.
+`source-code.zip` contains final project metadata, release scripts, proof reports and prior record-level reconstruction sources. No game executable or full game archive is included.
