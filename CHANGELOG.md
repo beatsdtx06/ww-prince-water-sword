@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 â€” OpenJade combined expanded voice release
+
+- Retains the accepted WW Prince model, Water Sword from New Game, enhanced damage and boss-only blue aura.
+- Expands isolated spoken coverage from 93 to 110 and includes 80 mapped Prince turns across 38 in-engine scene tracks.
+- Adds 26 original WW effort resources and two mapped death/fall sounds; corrects four hurt mappings while retaining accepted short attack sounds.
+- Uses complete PCM bank headers and native Mod Manager archive operations; no Finish Setup helper.
+- Keeps pre-rendered videos, Dark Prince and other speakers unchanged; ambiguous extra nonverbals remain excluded.
+- Replaces the old 93-line public synthesizer with a non-overwriting, hash-validating repackager for the existing approved asset.
+- Documents offline, installation and scoped runtime evidence separately; no full-campaign playthrough claim.
+
 ## 0.5.1 - 2026-10-29
 
 - OpenJade-only release; dropped original Steam-engine support as requested.

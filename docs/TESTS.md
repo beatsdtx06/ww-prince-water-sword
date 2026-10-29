@@ -1,13 +1,25 @@
-# Verification scope
+# Verification scope — 0.6.0
 
-The package preserves the accepted OpenJade 0.4.0 model/sword/effects records exactly and all 93 approved voice payloads exactly. Historical model behavior evidence is retained in `model-verification-0.4.0.json`; it is not a new campaign test.
+## Static and offline checks
 
-Automated release checks cover JTMod integrity, the two native audio operations, original-bank guard, exact accepted BF records, all 93 clip hashes and mappings, held-clip exclusion, one OpenJade-only catalog entry, ZIP contents and hashes, no setup/game-file/executable operations, and deterministic rebuilding.
+48 safety regression tests passed. Final native JTMod integrity, 61 accepted model/script records, original-bank guards, unchanged historical base stream bytes and later approved PCM homecoming were verified. All 55 newly added primary-bank records and 26 resident effort resources passed complete decoding/PCM checks; scene durations and protected other-speaker samples were checked. Word-repair provenance and reconstruction were independently verified; the two documented wording/articulation qualifications remain.
 
-Private real-manager evidence covers importing and applying the native package, exact modded BF and per-sound-entry comparisons, all 93 full audio decodes, and a GUI Restore original followed by Apply. Original `pop3.bf`, `soundlocal.big` and `soundlocal.fat` hashes were restored exactly. OpenJade 0.5.1 reached gameplay with the WW Prince and Water Sword in the native test copy. Earlier notes used stale Windows version metadata for that same engine binary; see compatibility details.
+## Installation and restoration
 
-On 2026-10-29, the user confirmed in the disposable OpenJade test window: "New Game works and the Water Sword is present." This is user-reported confirmation of the fresh-start test, not a full campaign or an independently observed automated test.
+Final package native sound operations passed independent archive apply, byte-exact restoration and deterministic reapply against verified originals, preserving 34 unrelated archive entries. The same append-only algorithm had previously matched actual Mod Manager baseline output byte for byte. The final applied sound pair was placed directly in a separately backed-up disposable OpenJade copy and hash-verified; this is not a new final-package Mod Manager UI Apply/Restore test. No main game or main save was modified.
 
-Current final-artifact checks and their precise limits are recorded in `release-verification.json`. A full campaign, every line's subjective playback, every boss encounter, arbitrary mod combinations, other languages and other engine revisions are not claimed verified. The Steam engine is explicitly outside release scope.
+## Runtime and listening
 
-Tests use disposable copies and do not overwrite the user's installed games or saves. Release validation does not require or install an API key, AI runtime, custom launcher, or player-side helper.
+On 2026-10-29, the final hash-bound package reached the OpenJade 0.5.1 Vulkan menu and live gameplay from a disposable Palace Balcony save. The WW Prince and Water Sword were visibly present; sampled frame overlays were 59.9-60.0 FPS. The homecoming subtitle sequence appeared. A jump input was sent, but no frame-by-frame animation/audio synchronization or audible output was independently certified. Menu navigation did not reliably select New Game, so this final run is an existing-save smoke test, not a fresh New Game test. Earlier user tests confirmed New Game/Water Sword, corrected opening dialogue/music/effects, and native WW efforts in their earlier packages. The final run exited via normal window close. Its log contains a pre-profile-activation save warning followed by successful activation of the disposable profile; no audio decoding or crash error was logged. Sampled FPS is not a comprehensive performance benchmark.
+
+A full campaign playthrough is **not** claimed. Prior opening and effort
+tests belong to their tested packages; they are not automatically evidence that
+every newly expanded scene was heard in the final package. The final four hurt
+slot corrections likewise require explicit evidence before being called newly
+runtime-tested.
+
+The public `tools/test_release.py` performs offline integrity checks only. Its
+`--self-test` fixtures contain symbolic bytes, not usable game/audio content.
+Standalone sound-archive apply/restore simulations are archive-level tests, not
+an assertion that the actual Mod Manager UI applied a new package. File decoding
+and transcript reconciliation are not subjective listening certification.

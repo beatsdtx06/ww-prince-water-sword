@@ -1,21 +1,28 @@
-# Installation and recovery
+# Installation, upgrading and recovery
 
-For a supported OpenJade installation: extract the 0.5.1 ZIP, import its one JTMod, enable it, Apply, launch. No script or extra installer is used. Select **OpenJade → The Two Thrones**, not Classic.
+Extract the 0.6.0 ZIP, import its one JTMod under **OpenJade → The Two Thrones**,
+disable older WW Prince/model/sword/voice packages, enable this one, Apply, and
+launch. No helper script or extra setup is used. Do not select Classic/Steam.
 
-## Upgrading from 0.5.0
+## Upgrading from 0.5.0 or 0.5.1
 
-If you only imported/applied the old JTMod and did **not** run Finish Setup, disable that old package and enable 0.5.1 before applying. Do not enable both. Mod Manager owns and removes the old package's added helper files when changing its selection.
+If you only imported/applied the old JTMod and never ran the 0.5.0 Finish Setup
+helper, disable the older package before applying this one. Never enable both.
 
-If you previously **ran** an old helper, your game may contain changes outside Mod Manager's tracking. Preserve all existing backups and receipts. Restore those old helper-owned changes using the old release's documented recovery process before removing its files, or recover a verified original game installation separately. This is legacy recovery, not an installation requirement of 0.5.1. Do not force Apply over an externally modified archive.
+If you previously ran an old helper, some changes may be outside the manager's
+tracking. Preserve existing backups and receipts. Recover those helper-owned
+changes using the old release's documented recovery procedure, or recover a
+verified original installation separately. Do not force Apply over an unexpected
+external-change warning or bypass original hash guards. Old-helper recovery is
+not a normal installation requirement of 0.6.0.
 
-The original reported installation used import/apply only; the new native package removes the previously mandatory helper step. A full diagnosis of every possible crash or unrelated mod conflict is not claimed.
+## Other mods and uninstalling
 
-## Other mods
+Overlapping `pop3.bf` edits or English `001.sb0`/`004.sb0` replacements may conflict.
+Use this combined mod by itself when checking a problem. Save files are not
+replaced by this package; back them up before changing mods anyway.
 
-Disable old WW Prince/model/sword/voice editions. Test this mod by itself first if the game crashes. Other model replacements and modifications to English `001.sb0` can conflict. Save backups and manager backups should be retained. No saves are replaced by this package.
-
-## Uninstall
-
-Close the game and choose **Restore original** in Mod Manager. There is no new helper to run. The native package's model and sound archive changes participate in the manager's normal restore operation.
-
-On an unknown-bank error or unexpected external-change warning, stop and preserve the files/backups. Do not bypass hashes. Ensure the selected folder is the intended OpenJade game and the audio is the supported English version.
+Close the game and choose **Restore original** in Mod Manager to uninstall.
+Retain the manager's backups. On an unknown-bank or externally-modified archive
+error, stop and preserve the files/backups. Confirm the intended OpenJade game
+folder and supported English audio; do not guess or bypass verification.

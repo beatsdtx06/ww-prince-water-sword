@@ -1,794 +1,294 @@
 {
-  "formatVersion": 1,
-  "package": "WW Prince Model Sword Voice 0.5.0 - Voice Preview 1",
-  "status": "PARTIAL_DEVELOPMENT_PREVIEW_NOT_RUNTIME_TESTED",
-  "archiveBytes": 92169193,
-  "baseSha256": "7e810ba92128a00d505d1a89cb84adb97553cdc6bf5a8e4e4cf99b5487f9a627",
-  "patchedSha256": "67459b29e5cb349d60b8165822e79bfd9a078ea98213ee9e1677d93f765e0dc8",
-  "fatSha256": "ac47195fedeb6edb35ec608022f7713a13908b41a4f948a4587beb2ee26fa972",
-  "patches": [
-    {
-      "index": 260,
-      "start": 64894309,
-      "length": 18159,
-      "file": "patches/260.bin",
-      "sha256": "c79191867a2733dcabe0b5ca1561c8f5c1acb29f0a4c92fdb88ff1898e85b531",
-      "originalSha256": "e623f2f632d5e4d25329abe75ed221bbdb95d469b7a833250d3a7825d0c5cf76"
-    },
-    {
-      "index": 261,
-      "start": 64912468,
-      "length": 35411,
-      "file": "patches/261.bin",
-      "sha256": "768d131a97eae036dc1ad965f46362e6a4637a2c8858a9f19df58b77d3cb19fd",
-      "originalSha256": "452c7cec88a99b502d5c1dc038f964fde465ac2b4264ba28deca5f9b36bea247"
-    },
-    {
-      "index": 262,
-      "start": 64947879,
-      "length": 14363,
-      "file": "patches/262.bin",
-      "sha256": "332d2900901e6941aa0165ebacfaed2cee8ff708443de948240193aab5600f57",
-      "originalSha256": "737b5e476ddb447f8a02bdb539dc65ace9f092f775b18a4d2ad39ef2dbe581b5"
-    },
-    {
-      "index": 263,
-      "start": 64962242,
-      "length": 8806,
-      "file": "patches/263.bin",
-      "sha256": "757774ae0ee458cd9d06b7f84ca40999ad6855d1da6ee31b29db998bbe70de3c",
-      "originalSha256": "2a5c7c3c6dbe463317736ac5cfeea6230ef3575d04151efd0233b83b9bc15e0b"
-    },
-    {
-      "index": 264,
-      "start": 64971048,
-      "length": 24714,
-      "file": "patches/264.bin",
-      "sha256": "c75346ed3ef387aaef57f38d2a238f911730ab4d5a172f32f2a87b22cce31d1a",
-      "originalSha256": "89c7365bdf070fb8628ee877f2090e90ef2595a7855e4d3073574549b898b0df"
-    },
-    {
-      "index": 265,
-      "start": 64995762,
-      "length": 9993,
-      "file": "patches/265.bin",
-      "sha256": "4dc0873e47928c407ff0f8460d97d5b766b4a812cdc8c5074947d2e0af1a1104",
-      "originalSha256": "dc231fa231ee1ee6b395569c1e1d2a674c084441532b2dde03a7175834bee19c"
-    },
-    {
-      "index": 266,
-      "start": 65005755,
-      "length": 37763,
-      "file": "patches/266.bin",
-      "sha256": "62ae54a5b5844bf12af5a6e49c9702d8f31e02f2e4b92b67add032891be48a76",
-      "originalSha256": "7d777cf63489dbd3ec988ff4976493351d82c7269a8294f700a0b5d2fa908e1c"
-    },
-    {
-      "index": 267,
-      "start": 65043518,
-      "length": 76394,
-      "file": "patches/267.bin",
-      "sha256": "cd40f3e55b290f2e6431b971cf1698798adfdba8a27b5813706f2ec9e178d1cd",
-      "originalSha256": "e34c9a4d5ff4318b007557a784f02d2dcf85d75ede44503f4c96ba384ee9c0d4"
-    },
-    {
-      "index": 268,
-      "start": 65119912,
-      "length": 65426,
-      "file": "patches/268.bin",
-      "sha256": "18695a15904d38ce217ab266c7a2254af2ea83895f7c063cef91b014ab324778",
-      "originalSha256": "2d4cade1d433d97d9a34a2ef30be14760a1116294a6f4f2f478076f32720c2ec"
-    },
-    {
-      "index": 269,
-      "start": 65185338,
-      "length": 71660,
-      "file": "patches/269.bin",
-      "sha256": "8431ba0e2527e1d813be24b9abded1d5601180d3417f77676f8460dbfaed4684",
-      "originalSha256": "5823d4e6de565a7a77437f983f5d18c0bfa1e0511a5c8e008d798c23fe90fddf"
-    },
-    {
-      "index": 270,
-      "start": 65256998,
-      "length": 231716,
-      "file": "patches/270.bin",
-      "sha256": "fd482118d7e07f34dcbf8feb53629d632ce2bfb3b3d7b3e62785234e08a23304",
-      "originalSha256": "6a82aafebb7fb42a97418c51e30ddbab985b51bc3c378c00c422152fdf433226"
-    },
-    {
-      "index": 271,
-      "start": 65488714,
-      "length": 96420,
-      "file": "patches/271.bin",
-      "sha256": "3118c6b9678bd24a2ef0f7d6752a17418736bcf48fda79b826badbd41f1662df",
-      "originalSha256": "e49223b2aa30e20457bc5ce59d5c23544028fca9c2b831e2e808b4aa810700d1"
-    },
-    {
-      "index": 272,
-      "start": 65585134,
-      "length": 140896,
-      "file": "patches/272.bin",
-      "sha256": "ca2043a4b5bacd2ef5ee3aace281dbf9ce2ad9c32e40157ca29a573e878a6c81",
-      "originalSha256": "f90352d912329f85bbb807181c67a277fe31e36d42e2b558164c23b709e0e214"
-    },
-    {
-      "index": 273,
-      "start": 65726030,
-      "length": 151673,
-      "file": "patches/273.bin",
-      "sha256": "b68e1cdf248cfe8be379193cae9fdc84239c8614b1afc612f0badaa516a317a6",
-      "originalSha256": "df59e07ec96771d3bce5d93780f7c05a1700afed3ac0fe68d419ea92b340a700"
-    },
-    {
-      "index": 274,
-      "start": 65877703,
-      "length": 158170,
-      "file": "patches/274.bin",
-      "sha256": "054aff3a4e15bab79b7898fe963d28942f6af8a61dc204688c25c2b3944107bb",
-      "originalSha256": "385b02c34e89459fc5632f2847bb299a8bf5337f4ebda7ea02722a6ed1d7e74f"
-    },
-    {
-      "index": 276,
-      "start": 66130314,
-      "length": 275483,
-      "file": "patches/276.bin",
-      "sha256": "6dc0a970856d3b79272024a5381ed3943160a44b4f5eb8f57f764f11374f376c",
-      "originalSha256": "99ac3403b920a64acd6156ecd2909aa7f1f2be197c6e32e19107988abcbb9f2c"
-    },
-    {
-      "index": 277,
-      "start": 66405797,
-      "length": 48755,
-      "file": "patches/277.bin",
-      "sha256": "b56208f12cb77964009121d0969efc2a42b3db150dadc043676c6099e1b3bd40",
-      "originalSha256": "58c66d7f862962fa84b3671c207bebdd6b4643e92885c4fc8904e7093fc5b5d5"
-    },
-    {
-      "index": 278,
-      "start": 66454552,
-      "length": 35852,
-      "file": "patches/278.bin",
-      "sha256": "482b16a19679c7ec6691f902a5ceff0b92d6599c7de64dc07693ab3aa6ce5570",
-      "originalSha256": "0a8b50900721ee6849d539b4be763ad4c9f5ad85c2d97123ebae1fe61126c5c3"
-    },
-    {
-      "index": 279,
-      "start": 66490404,
-      "length": 18310,
-      "file": "patches/279.bin",
-      "sha256": "4c4670faa20664c72c025915746cac463175d8a3189e9611b7c30e706c5b1567",
-      "originalSha256": "46ffaab92ca369710c7425bd3fbb598c9ab152ec095b5ba31e1daace3e4f2bd6"
-    },
-    {
-      "index": 281,
-      "start": 66571651,
-      "length": 42560,
-      "file": "patches/281.bin",
-      "sha256": "a81616adfa2b1cd475e04e37d02ec5a57ff373d6e01f29120a678b171d6c8d0b",
-      "originalSha256": "96dd5cd70eb374d546b7ab4dc2b503afeb65f8220216eec3d73adfc040bd5703"
-    },
-    {
-      "index": 282,
-      "start": 66614211,
-      "length": 44124,
-      "file": "patches/282.bin",
-      "sha256": "c55aff87460cea6da8d5a254565d8496062acfacfb62a715980daec4365cd0c8",
-      "originalSha256": "bb9f5a2b84db3569cd53ddc9252e86f6b9621e625280499e9aa0e2ec02e311e7"
-    },
-    {
-      "index": 283,
-      "start": 66658335,
-      "length": 27006,
-      "file": "patches/283.bin",
-      "sha256": "6d92a9441256a0eb2b9a56b8da29ad2213003e310872f4d096a6ec3bfb63d2f6",
-      "originalSha256": "1a2af1bfc3bd3e41870e23c2a16dc1b3fcc0e7de604c075c82a0820ea036d155"
-    },
-    {
-      "index": 284,
-      "start": 66685341,
-      "length": 11958,
-      "file": "patches/284.bin",
-      "sha256": "d4869c58092a55bbbe053ac02509559b6be3b56dfb1c76f9f3b881058b05d64d",
-      "originalSha256": "f88e98d0368face2ce278f75d766e2f5371ab58e5f46639c8dbe2529fbf1aa92"
-    },
-    {
-      "index": 285,
-      "start": 66697299,
-      "length": 26995,
-      "file": "patches/285.bin",
-      "sha256": "7c7465ad9c6bf47350c8a7e5e4ea9354394979819c709ad3c02d9ca148ea46a2",
-      "originalSha256": "aa5f1ed630c03053bcd5f2448e0ee06227e2469c4a3013ed54583196d3b2cff3"
-    },
-    {
-      "index": 286,
-      "start": 66724294,
-      "length": 10578,
-      "file": "patches/286.bin",
-      "sha256": "9d0a1ce355b2c5a2269bc954ccf02ab8940e787b9293f94495a4f995791fa634",
-      "originalSha256": "9e94469ecbf3b2cf4baaca9228ac832778de98f184db775c82750ad407d1b3cb"
-    },
-    {
-      "index": 287,
-      "start": 66734872,
-      "length": 9949,
-      "file": "patches/287.bin",
-      "sha256": "291f3baed5d1f9ccd1e9d86a087d87d51bf76803e74b1b497296ec2d0e9bbdbd",
-      "originalSha256": "ee6d6b63cd7eaf81e96bf65400eef27b01c15da8a556d51187a158621976f1ea"
-    },
+  "version": "0.6.0",
+  "packagedAsset": "WW-Prince-Model-Sword-Voice-0.6.0.jtmod",
+  "coverageCounts": {
+    "isolatedDialogueClips": 110,
+    "inEngineSceneTracks": 38,
+    "mappedScenePrinceTurns": 80,
+    "nativeEffortResources": 28,
+    "nativeResidentEffortResources": 26,
+    "nativeDeathFallResources": 2
+  },
+  "expandedRecords": [
     {
-      "index": 288,
-      "start": 66744821,
-      "length": 42033,
-      "file": "patches/288.bin",
-      "sha256": "36a8f44d763e24c948733faff1d686e26a0075a86b1acac0e214caab78c3c874",
-      "originalSha256": "e9d86bec09c0e2db1f6d312896fcc1517b69f1e2c7fad3c17c8e8692615a150e"
+      "index": 2,
+      "kind": "scene",
+      "wavSha256": "73276a7229ddd612586b64a1c20c978bfaa4b28352633e71d1db474d8e1fea15"
     },
     {
-      "index": 290,
-      "start": 66819708,
-      "length": 77862,
-      "file": "patches/290.bin",
-      "sha256": "61a1ad284bb268d390b10086f29f47bcb1585c819cfdd6949e2a0ee6d2a66b9c",
-      "originalSha256": "66c55d2eecc7342ec797b6607b46ff8fcd2ec9877211b66aed0f88771735fdd3"
+      "index": 4,
+      "kind": "scene",
+      "wavSha256": "ea280e950b42f8b93e132c983ca383fbeaac763ba9ea77de39ffc22203f17c82"
     },
     {
-      "index": 291,
-      "start": 66897570,
-      "length": 50527,
-      "file": "patches/291.bin",
-      "sha256": "b1ca4371cc3f11f5966ef5ca66828485f1adc81b0d16df9593002b4f3ca3532d",
-      "originalSha256": "936f9960cc9bf7feb499a584154423020a18fc5efc966ef257b8b85a27ef6656"
+      "index": 7,
+      "kind": "scene",
+      "wavSha256": "d5aff95340ae94dd5f14f6edf5d396b7b256028e22012d10b68131e38dede729"
     },
     {
-      "index": 292,
-      "start": 66948097,
-      "length": 22774,
-      "file": "patches/292.bin",
-      "sha256": "6bddb52852cb1be48dab5ea9b2f34301d39ff8136f21a4168e2762aa8a15878f",
-      "originalSha256": "e8c250b832f443cc2884103ca6e0037307368e53536127badb5866085e30f3f3"
+      "index": 8,
+      "kind": "scene",
+      "wavSha256": "387b367db57243807a32c9d58be0116478d4a40c293a486bdf15474d9bd683a1"
     },
     {
-      "index": 293,
-      "start": 66970871,
-      "length": 38666,
-      "file": "patches/293.bin",
-      "sha256": "4b25619a5879bce2ffceb8fb40fc215409772996e3a420c9691282332f17ca7a",
-      "originalSha256": "cc3bac450797afb6f34bac33f2254f63941520649327d0c6dc6552a6c09ba673"
+      "index": 10,
+      "kind": "scene",
+      "wavSha256": "503c7cdd6039cc98c90c34347a65b360456dfce9646b44972858081470c9b1e0"
     },
     {
-      "index": 294,
-      "start": 67009537,
-      "length": 17175,
-      "file": "patches/294.bin",
-      "sha256": "0c75d5b1d61695923befadb86120be2a94380a6fb971243985f0d0626cb2fc45",
-      "originalSha256": "e670be49a3931f899b21ce1461a54df9f3bf8c32695a43e7ff92cecfc5a226f0"
+      "index": 11,
+      "kind": "scene",
+      "wavSha256": "c93bf072e45cf21855e58e277c820dd9637f6eb1ab4e1ac88f29578c7739c7f6"
     },
     {
-      "index": 295,
-      "start": 67026712,
-      "length": 21918,
-      "file": "patches/295.bin",
-      "sha256": "7647f7047cb0fff608e247146c7b55c6cf9627831a608f805023585c77d24136",
-      "originalSha256": "4dd682f1e14e930ad95358aa82e93c96f2f6864aad80600abf1cb24801a09586"
+      "index": 14,
+      "kind": "scene",
+      "wavSha256": "a4a8697d5ccef6061068fd47e55cfeb024571fb629b894a017fc987e28a6095e"
     },
     {
-      "index": 296,
-      "start": 67048630,
-      "length": 42120,
-      "file": "patches/296.bin",
-      "sha256": "01a5db811174c6b0ba3336e02655cca46b822dcda3e6ffd0877c2a53e7fe3011",
-      "originalSha256": "24041e4dca5ebd3fc8ec409f4940f87e73d94fdfade4fc1e9461f0f422709a40"
+      "index": 15,
+      "kind": "scene",
+      "wavSha256": "b940b1cd4271bfe114faa33c0098aed31f70f7b42849f93b656ae4f80643b58e"
     },
     {
-      "index": 297,
-      "start": 67090750,
-      "length": 189440,
-      "file": "patches/297.bin",
-      "sha256": "45f2b7af54fb8e043fae7a669f23f984f174a02359bb5b754cd0630dfb528531",
-      "originalSha256": "cbf33ffc7858654bf31d31aea9b709a18f84dc4d152b9c1afc9ac221a516df39"
+      "index": 16,
+      "kind": "scene",
+      "wavSha256": "6306c60248ef59838112cedaa08206dceb49e3e80cf151c033ed85e3c5c3b0d8"
     },
     {
-      "index": 298,
-      "start": 67280190,
-      "length": 56626,
-      "file": "patches/298.bin",
-      "sha256": "4af58b04e8c23ac2c7ba08ed216bc4f37f39d7bd368a4216707bd4df6d90fb79",
-      "originalSha256": "e8d5051fad65884393483546fb4b0bfdd5337dbf641c94ca22f6a5ed6e546f0c"
+      "index": 18,
+      "kind": "scene",
+      "wavSha256": "df5dc45f892813b454de87e1b4da7568f2a6eed78cead9a2ddd937ae3ecb6c33"
     },
     {
-      "index": 299,
-      "start": 67336816,
-      "length": 23093,
-      "file": "patches/299.bin",
-      "sha256": "8a42c8b0d20910fbc3f85bd078cbae05e869e813201820c7358a525ffd649b1d",
-      "originalSha256": "37631dd147858be0f02fc3e22b73e96826a1d6feb124cf8af3add8919a94b0a3"
+      "index": 21,
+      "kind": "scene",
+      "wavSha256": "67ff3a918c28dc1fef1b3f46767545f9fb9111d7745f43b14e8cfad684403fe6"
     },
     {
-      "index": 301,
-      "start": 67374143,
-      "length": 65876,
-      "file": "patches/301.bin",
-      "sha256": "0393bd6a796aa1bd997544fdb41837f136d569ab57ec13a56a5e7c9d78e21855",
-      "originalSha256": "d5a9a63e37e54435d226d0234ef5462b3b19aa492314b75ec293194f25a0b228"
+      "index": 23,
+      "kind": "scene",
+      "wavSha256": "1d109635d5a35be822acc4ab8c1dde532bef00ceaad1ee051e13fce319bf9f7d"
     },
     {
-      "index": 302,
-      "start": 67440019,
-      "length": 69568,
-      "file": "patches/302.bin",
-      "sha256": "618c3a87f8de327074693131459b962436f1a783d7be034c0033368c0810e101",
-      "originalSha256": "6114c7db5a59092a08211ca0c48694a1bfbd70614e99734bb7d19e6ecf8449ba"
+      "index": 24,
+      "kind": "scene",
+      "wavSha256": "769938f5a8bf29ba697f1a0a85c002535f90b3bf86cf8ca3dac0fc3d96371ac8"
     },
     {
-      "index": 303,
-      "start": 67509587,
-      "length": 22211,
-      "file": "patches/303.bin",
-      "sha256": "4a0ae7db7bb77ebf43e8462d00cc5b8b7f78935a44170787693641d9c5dfa5b2",
-      "originalSha256": "768559b8f162a2b56b87995be3c97078e3c8fa62768f92164f133a788e14d182"
+      "index": 28,
+      "kind": "scene",
+      "wavSha256": "a32e7c3bf8fd5de187bb4f2df061c695246532ede26407fea88acabc8e5ce843"
     },
     {
-      "index": 305,
-      "start": 67567640,
-      "length": 118615,
-      "file": "patches/305.bin",
-      "sha256": "7a5099e58dc2e85e69cd64aafed6a8393b4789670478b2ae13835bd9a5650508",
-      "originalSha256": "07de0efdadefcc43777f8c00dab7b284a610166ba61fed71366bad002d2551f9"
+      "index": 30,
+      "kind": "scene",
+      "wavSha256": "a36bd3e4b98c97364bd886d3931f10e7bc01b60edd073f8e359e9bf7e20730be"
     },
     {
-      "index": 306,
-      "start": 67686255,
-      "length": 51128,
-      "file": "patches/306.bin",
-      "sha256": "195481b48dc97f1f2b2daa7bbbbe5b6674f99c5ebcc63684f32a5b4db62bf90c",
-      "originalSha256": "35033126ebd8f4ed97bc5da15eeb8587bb210bd63172952ec10276cbd1482628"
+      "index": 31,
+      "kind": "scene",
+      "wavSha256": "2842c4aa68082ee0095e90d4b929fed08e40dfcc295a15fbf4f6b1a73777d187"
     },
     {
-      "index": 308,
-      "start": 67765680,
-      "length": 58490,
-      "file": "patches/308.bin",
-      "sha256": "614f82f98062efe3907772d02aef2ff2cd7d5d784536bd7f174c35b8444424bc",
-      "originalSha256": "0d780109fc7ea9d1fceb814a85632dbfdf4b3b40a3ff1efc5a20616c1a6522ef"
+      "index": 33,
+      "kind": "scene",
+      "wavSha256": "e423935b6d5f766b7658a26d150c578e62e06e296ea384046bb030268cca1302"
     },
     {
-      "index": 309,
-      "start": 67824170,
-      "length": 15213,
-      "file": "patches/309.bin",
-      "sha256": "cd37e7fa7bcc015fb9c8e1f1703b49a2fe893ac760e376eecfd2cc1968a41f67",
-      "originalSha256": "4a0abd68ec004d014b6451a69c276e0e92779d68957515a3bfd5971a40267b6d"
+      "index": 34,
+      "kind": "scene",
+      "wavSha256": "10d46ad36277e388118c5386e511f81ce732e0e7a2bc07aed8b318aa007b6821"
     },
     {
-      "index": 310,
-      "start": 67839383,
-      "length": 77193,
-      "file": "patches/310.bin",
-      "sha256": "cef4c52d4c5fa48658ec66a850bc51845d6a3cfb1a7d9798be6a3eac1fda168a",
-      "originalSha256": "4b1f9f724db64bf369d91092427d75bc962d117565d853ffdd18f4d8b1ad1915"
+      "index": 35,
+      "kind": "scene",
+      "wavSha256": "d9f4b8b4fd002ca90b079d54c320cafbcd10c7f92d90daf4cbedf20c08b27e68"
     },
     {
-      "index": 311,
-      "start": 67916576,
-      "length": 40381,
-      "file": "patches/311.bin",
-      "sha256": "bc927e8c7d2f5d5d6d8fabe8c4c671985456063e4b8b5df0f3e4606e9e1aad27",
-      "originalSha256": "12a9ebfe8d135e51ba91b21d51685bda29b62922a1127ece9cde288ff2ec8d6e"
+      "index": 36,
+      "kind": "scene",
+      "wavSha256": "db4d7e6e605c9b1ba3ea6d13ba46190a848b47abed7b5e968cdcce55fafca3f0"
     },
     {
-      "index": 312,
-      "start": 67956957,
-      "length": 128826,
-      "file": "patches/312.bin",
-      "sha256": "ba3d061383c5f48494249d76da5302a1224cf1379f7cb642ba3ebf0849eb49c3",
-      "originalSha256": "585b6a28b8a6fd5dc2587e8b4353db6a8006a603ef56075b020300dcf13f79d4"
+      "index": 38,
+      "kind": "scene",
+      "wavSha256": "5168c56f3d5ff8208f53e5c48754dfc0088e4c5c150acd3149615e8894ce6a4c"
     },
     {
-      "index": 313,
-      "start": 68085783,
-      "length": 89262,
-      "file": "patches/313.bin",
-      "sha256": "25bd7fd3a725d5ef1dad2cdff8e2d224cffb14966d956313519bb9f6d343191e",
-      "originalSha256": "5fefac16fc057d782c9065bc81163c8e2673b81b19fdd2e643a15ea9161a20bb"
+      "index": 39,
+      "kind": "scene",
+      "wavSha256": "afae9ad78de2e0a6f83c9a21ea3c3e0bc1f1b8690856f24f5bfc0fcdca313542"
     },
     {
-      "index": 315,
-      "start": 68191368,
-      "length": 19471,
-      "file": "patches/315.bin",
-      "sha256": "ea6fdece486c19a84ac26255c7fd1a6ba767963d900557c1b05de15af2ababc7",
-      "originalSha256": "1db8369b4015f82e785adbd64a2f4d232152f22c11a8aea817d638f704c4060a"
+      "index": 40,
+      "kind": "scene",
+      "wavSha256": "b9ecf2881c97486778ad6f4b6992400ec6fce9a83dd935787d35c6cc7c3b6644"
     },
     {
-      "index": 317,
-      "start": 68251071,
-      "length": 37533,
-      "file": "patches/317.bin",
-      "sha256": "54b7059a3345f76e13a1741b1bd66174fc87a31552a0673d675c901edac8629e",
-      "originalSha256": "65274fc17e1eb1bcc76291791373f7fca44f244da49a7fab43b563852d92c443"
+      "index": 42,
+      "kind": "scene",
+      "wavSha256": "651dccb798ffad2b68f0594474db1ecb1121beeaa939a46ea89d95b38d3e3621"
     },
     {
-      "index": 319,
-      "start": 68313693,
-      "length": 53839,
-      "file": "patches/319.bin",
-      "sha256": "a17faa7c258cec2462fb7e8d002ae39d1dd0274f44df319b101cdda428f4bbdd",
-      "originalSha256": "750a31a18b794443049eaa975737c6cc91c6b51b220cf34d2ece6fb0d12b6fa8"
+      "index": 47,
+      "kind": "scene",
+      "wavSha256": "8ac7b998b9cf505c8c6a1ed62e40975b31e4c541eb812a79aa1769e291ad3ea1"
     },
     {
-      "index": 322,
-      "start": 68384201,
-      "length": 22634,
-      "file": "patches/322.bin",
-      "sha256": "1ba6ec87bf96faf232dfa0ff624a6466815dd0d3e704b83cd6591e591c74f701",
-      "originalSha256": "eb2a731497cc1dfb41588f67e6f69cbee8dc9e6d57bda0e6d0224da9473d6f13"
+      "index": 49,
+      "kind": "scene",
+      "wavSha256": "9cdfa47072de002f566c6a2d4f5a7ed4cfce6a0939f02e1bf011c9ce8e472b32"
     },
     {
-      "index": 324,
-      "start": 68423173,
-      "length": 38936,
-      "file": "patches/324.bin",
-      "sha256": "52bb5d78f416b4a81dae8af549103a4691fc8a88327c7e9a91a55c61ec2f5262",
-      "originalSha256": "89fd69c6fef41cec488855ad0345577364ad163990173c36532985aa2d04c277"
+      "index": 50,
+      "kind": "scene",
+      "wavSha256": "c3388ae8eb7fabed8c8bd067d5625d097caaabaf4b2068145c8df7a583202c54"
     },
     {
-      "index": 325,
-      "start": 68462109,
-      "length": 16117,
-      "file": "patches/325.bin",
-      "sha256": "cc11a6c4a5d0b30863582236fe284a6f2bd7c9f0d1de45cab42149a141fcc676",
-      "originalSha256": "7f979b87fec55251ed6e0bc838bd4f0d8917bb4081f546ee660bcdfc4218ac72"
+      "index": 51,
+      "kind": "scene",
+      "wavSha256": "d26a3a1dedb259a56ce2e620b10a2b3c174bad3fdfe08562cc2c993310d17d5f"
     },
     {
-      "index": 326,
-      "start": 68478226,
-      "length": 35620,
-      "file": "patches/326.bin",
-      "sha256": "e745585a45aec38832fe5f498583f54c0f1c86a6d97d0a583a4ce3997c6e5026",
-      "originalSha256": "191da4f0e51610917c359f2fc9c3ac7ed3c7439f7e4c415e5e555ef909b7ce42"
+      "index": 52,
+      "kind": "scene",
+      "wavSha256": "6baf9574f7b35fe86c6841eb1162bcfbabef59bb9c31d6748f52e7ec742c27bc"
     },
     {
-      "index": 327,
-      "start": 68513846,
-      "length": 84564,
-      "file": "patches/327.bin",
-      "sha256": "9563236c6065122adc9739cb82fb6af2a98950dc20a1f5784140ae014823710e",
-      "originalSha256": "7703abfe3d128da6b980873015aeca694d1cc55e6fccc271ddf2b6bfbad63a65"
+      "index": 53,
+      "kind": "scene",
+      "wavSha256": "dc7fa681beae79ec628f8ce65f63e1eb6964c18b7e33ff046ae2fe53789768a6"
     },
     {
-      "index": 328,
-      "start": 68598410,
-      "length": 40885,
-      "file": "patches/328.bin",
-      "sha256": "0633436245017ac8cb0479149880e7f8a063affe03cc2ee55a19e0610d3e3435",
-      "originalSha256": "08e97771e3149eeea9186f4a189996e71f8d9cad86583aab3dd44951827091b3"
+      "index": 54,
+      "kind": "scene",
+      "wavSha256": "23fd54c60c09731bb0052c13802cc0a6a06b4d5c1b1abde34f2c899f0a68d40d"
     },
     {
-      "index": 329,
-      "start": 68639295,
-      "length": 67602,
-      "file": "patches/329.bin",
-      "sha256": "754c93eecae1f2597ebdb7cfaceca1a4d689cb35df66bb10b14bd383f8477f1c",
-      "originalSha256": "2274add7e6a5de2197e36191d81217bfea086107b8985a9749b6c94376992333"
+      "index": 55,
+      "kind": "scene",
+      "wavSha256": "e4591d763f9ab03cdaa6a55b77898b341212aa554a91444bceb5034a85a67c93"
     },
     {
-      "index": 330,
-      "start": 68706897,
-      "length": 145023,
-      "file": "patches/330.bin",
-      "sha256": "881d8d416cce338738f84ab7e20e74e74c9d349a05af5684de91d4857ee464eb",
-      "originalSha256": "53b347409e9123f60bbea4539e5346a3729a98bf3bc0c460e87d904274023d5b"
+      "index": 56,
+      "kind": "scene",
+      "wavSha256": "28e9395d0b8deec2944e93c25b315299b237f0deb70e160a34cc0d49f83ee47d"
     },
     {
-      "index": 331,
-      "start": 68851920,
-      "length": 15806,
-      "file": "patches/331.bin",
-      "sha256": "5c031f25ac36ccab68dc233b93eb9ae059221c97a5f77c03ccc28fd87212a070",
-      "originalSha256": "2781d0874114f0b577f4f0dbf16c830595810619ca245575c052c151ad83c41b"
+      "index": 58,
+      "kind": "scene",
+      "wavSha256": "649ede26c09882db92423de4bec0b64a73c757727247b4b38b01e86c64346c9b"
     },
     {
-      "index": 332,
-      "start": 68867726,
-      "length": 51171,
-      "file": "patches/332.bin",
-      "sha256": "917b227acb6f643cf5069636e1983e77b6dc214b90ee62428d40e8ea75d2e94c",
-      "originalSha256": "b3771a0bf9b76a2eb0baa408e2c398fd068178d259be89470d22e7d67d8bd981"
+      "index": 59,
+      "kind": "scene",
+      "wavSha256": "234ba7b427f055fe70dd1837e34496e0d71c4e3bc5781772e8caf1676ac8de5e"
     },
     {
-      "index": 333,
-      "start": 68918897,
-      "length": 165261,
-      "file": "patches/333.bin",
-      "sha256": "11b8294b0425325c402a4f1c7a37dd832bd6c85ab018238f5ce3d25ab05b43b5",
-      "originalSha256": "a3a8d77a6b16b6475ae116d111463a08a77c8b228ffc15a8c899e88f7bd8600a"
+      "index": 60,
+      "kind": "scene",
+      "wavSha256": "1a908214ca2f8e11fe4999a33a8f665ff81e8792cff26fce3ffc426955f7494f"
     },
     {
-      "index": 334,
-      "start": 69084158,
-      "length": 114222,
-      "file": "patches/334.bin",
-      "sha256": "40754462ecd0db9fc9252818b1bf3fd0481c914999e37fef7de5168e8f2bf2f0",
-      "originalSha256": "2341f1ab54ea869d50618233273b1c10a805879b242dad821a8b62ff640eaa33"
+      "index": 259,
+      "kind": "isolated",
+      "wavSha256": "9d2cdb60a309873ffb3cebfc7465b77f59932200612ff43bf8d973a7dfb8c6a9"
     },
     {
-      "index": 335,
-      "start": 69198380,
-      "length": 12396,
-      "file": "patches/335.bin",
-      "sha256": "a2c68bcdb3c4ea573be3810d7c91efbead934265bc06e7494513a802cf3d8ff0",
-      "originalSha256": "0983c384062403f8f00c46273804eff588d4076d85c6675e3fe7c82f30dec4e1"
+      "index": 275,
+      "kind": "isolated",
+      "wavSha256": "e136f26fb5976e2b687887097ba5d86aa036105364500cffc635644d5b251125"
     },
     {
-      "index": 336,
-      "start": 69210776,
-      "length": 37095,
-      "file": "patches/336.bin",
-      "sha256": "3d9fda9c9456192e1aad36e73ecb7e028710d7e27d766cb8d66aa18dce2aab2b",
-      "originalSha256": "34cd74bae4e51b5f01e6032882abf421a672400e8eb90fe34b4f6630e1b6d2ad"
+      "index": 280,
+      "kind": "isolated",
+      "wavSha256": "33816bad179620f95179e5a2f85c018bf0a8b57045713f26e5ed18394316929d"
     },
     {
-      "index": 337,
-      "start": 69247871,
-      "length": 38473,
-      "file": "patches/337.bin",
-      "sha256": "21f38ea1a9b98a88877bcc7fc0aeefa295a75a0664025e503bc0801a62eb4de4",
-      "originalSha256": "cbef312f4251a829fc70a35401c38cab2397a0874f98909bff4d8b2496f602a8"
+      "index": 289,
+      "kind": "isolated",
+      "wavSha256": "7b59fad90e4517ad1efb819696d84a6ea0b00b4668a7c2ec01ef1adb5eec6495"
     },
     {
-      "index": 338,
-      "start": 69286344,
-      "length": 73601,
-      "file": "patches/338.bin",
-      "sha256": "cf275f80d99dd5e9345874fecec3ed40a0cacee8376f73bf5db417eb7e3e69c9",
-      "originalSha256": "a86a213ae0d9ceda16f9a860e899b389550bab327734f14bf93f066b037f1708"
+      "index": 300,
+      "kind": "isolated",
+      "wavSha256": "355e90cebf463130da6b994f7ddb645ae146bf6c430feeac23873a0ffebc6512"
     },
     {
-      "index": 339,
-      "start": 69359945,
-      "length": 56082,
-      "file": "patches/339.bin",
-      "sha256": "37903e079ea01c658a10c8ac4594bc1dec2d8e3c828efbad1b74338806097e8f",
-      "originalSha256": "e553539822bc8a4babcfda9d8101af7a076daab0730ca01a04adbb6a87533953"
+      "index": 304,
+      "kind": "isolated",
+      "wavSha256": "41da1d29456ba0022bc423ee5dad95ebdcd66c91203436e213873bebbe9c2566"
     },
     {
-      "index": 340,
-      "start": 69416027,
-      "length": 51883,
-      "file": "patches/340.bin",
-      "sha256": "f8ae70941ad51b6fe680c48433853de6110cf6de2ae722ad7c63bf983e753cd7",
-      "originalSha256": "37a962693cec142566d0781843eccf4c9632a013a2b940eaae3a324cb1611d22"
+      "index": 307,
+      "kind": "isolated",
+      "wavSha256": "ffddca3d930a253485915a623a32a78d7907525f8d91a4c36952267e28b57529"
     },
     {
-      "index": 341,
-      "start": 69467910,
-      "length": 24141,
-      "file": "patches/341.bin",
-      "sha256": "49fa10a9d09e1cbe7da6eafa2e6ed931b4d2dc1860d5d46895f5ab41281f9261",
-      "originalSha256": "0b8ac340a122cdef0b2388731f71df393a38ec109585e2712f3ce74e5537e438"
+      "index": 314,
+      "kind": "isolated",
+      "wavSha256": "c003efc48b3084f39d654d75d76c7865edce4621347535fbd9de2c96575a9cb9"
     },
     {
-      "index": 342,
-      "start": 69492051,
-      "length": 192781,
-      "file": "patches/342.bin",
-      "sha256": "63388489e6578ee61921d2fddaaf2e7d1dfb744ed80d576c6b9ca8e25dca0e4f",
-      "originalSha256": "59b86af3cd8aa39d6e43b2788f1b2209807088dbfdede907c615c4141452a445"
+      "index": 316,
+      "kind": "isolated",
+      "wavSha256": "96601c3441a2ecd1add880ac8904d96dbbb5abb09e455957e2a711473b0ecd65"
     },
     {
-      "index": 343,
-      "start": 69684832,
-      "length": 14784,
-      "file": "patches/343.bin",
-      "sha256": "1c47a295da9a5e40d722fbdd587b53ed6ff18f612ef644525152e6bbe2932f8f",
-      "originalSha256": "fef2576a8b0e4b75a1224a653b233f8d94748102edea3af56c57a0bf5fd0e83d"
+      "index": 318,
+      "kind": "isolated",
+      "wavSha256": "7ba087e32493a1b96d0af2b050ce239829f923216e2392f5c1a7834b13e37544"
     },
     {
-      "index": 345,
-      "start": 69714469,
-      "length": 26942,
-      "file": "patches/345.bin",
-      "sha256": "70116fcca1c138bbe56ceb4f59656497056cca24e43d2dbd0ff5ca6409737aae",
-      "originalSha256": "3860a4efb0ac6cb21cd0b3244f36e1f2863c5651d2f6336adcf24f6d5148b083"
+      "index": 320,
+      "kind": "isolated",
+      "wavSha256": "fc33177faddf5532d8e34dec808c8367966c5dd574586d8a21876cb91b13e6e4"
     },
     {
-      "index": 346,
-      "start": 69741411,
-      "length": 21728,
-      "file": "patches/346.bin",
-      "sha256": "8c6c8fc969bee132047498069dd16a52d4a3a8d4e0fba49237b29bf405175122",
-      "originalSha256": "d6d404c29f98abc4f34cc2129d266d2e25c0dd824fdcbaf25db33e769aa0386b"
+      "index": 321,
+      "kind": "isolated",
+      "wavSha256": "9dbfda118f3a5916b69c84327b6ac45e03215669a714e6659dba0981fe4c2d9b"
     },
     {
-      "index": 347,
-      "start": 69763139,
-      "length": 32378,
-      "file": "patches/347.bin",
-      "sha256": "6d3d0af0e7fddf1b862f432c64688eebb1e540f030c48a83f01663c319c50a6b",
-      "originalSha256": "0ccc308bc0deb089409f40e3c1310843855d3ae573f630a581f57b1e29d88fd5"
+      "index": 323,
+      "kind": "isolated",
+      "wavSha256": "b9e3ae18b1a0d95bda008d41cc02e8f4d7fffc0ce0b056c3a42eab9672583b97"
     },
     {
-      "index": 349,
-      "start": 69806569,
-      "length": 103588,
-      "file": "patches/349.bin",
-      "sha256": "f3addc958cdd91859862f1c7a33e74912b382f3c5b80dda8eed7c027d5efc87a",
-      "originalSha256": "1a74512629747804cdad35dfa755773c74d42f716c14b01252f1b2f6ce9672a8"
+      "index": 344,
+      "kind": "isolated",
+      "wavSha256": "5b233466c1f78feae1252021351ec8e2601558f103c8aab0ff8306f8c3f25aea"
     },
     {
-      "index": 350,
-      "start": 69910157,
-      "length": 26392,
-      "file": "patches/350.bin",
-      "sha256": "93cc5e0920a9b7de286e9f9c9898a756718cc5258495a30420cb8d1c99c985b6",
-      "originalSha256": "971ac66805cac3b74c72cdc200e576728ac130f3151986bf207314b77ef9aaf4"
+      "index": 348,
+      "kind": "isolated",
+      "wavSha256": "87ce11d9ce583d75e90edc5b4ab8aed5030f190e4568b8c52359dfb3bf1477c8"
     },
     {
-      "index": 352,
-      "start": 69970778,
-      "length": 93492,
-      "file": "patches/352.bin",
-      "sha256": "c2ab4c46a0ebfa185e0278b1f2bd730ec83b46abe79a67e4de80a6c9b25ebd11",
-      "originalSha256": "84df6dc09e17e2adef9ed31ae2d54aead52d081cab1140387f3b8229783c9848"
+      "index": 351,
+      "kind": "isolated",
+      "wavSha256": "e5becd38c227d2240c48fd2312c7aa8c88ca2532e1f62232ad1b608e56b74dc1"
     },
     {
-      "index": 353,
-      "start": 70064270,
-      "length": 19521,
-      "file": "patches/353.bin",
-      "sha256": "0b07da6fd51cf783ec6c4d0a6714935d2a8decb208b11d07fd89e8399344f5ab",
-      "originalSha256": "2eab837fd8522e7339417f4f3e4f3ac8a8fa00ff66867bc7962462bc2feaa71d"
+      "index": 358,
+      "kind": "isolated",
+      "wavSha256": "3fba3318b69318758c60456555eed24e8d203021ad9d85ff117f8c431d45f85c"
     },
     {
-      "index": 354,
-      "start": 70083791,
-      "length": 62275,
-      "file": "patches/354.bin",
-      "sha256": "b7fbf7b8bfe8b2beca51cb0086ade139eb0c3b730dd2f6bb329f290128d159ff",
-      "originalSha256": "75d8cdd31677e260e83269785b525222c414ac068d3622ac023582ff6df9125a"
+      "index": 367,
+      "kind": "native-isolated",
+      "wavSha256": "22e445d1d2199f2b05f8c0a174c65c156f7c57d7acf207d882c244e196435c49"
     },
     {
-      "index": 355,
-      "start": 70146066,
-      "length": 126990,
-      "file": "patches/355.bin",
-      "sha256": "27e420a99431663741fb672bf3ae0bee79ce7ea0afa0d59d281e8f4e7f9ad6eb",
-      "originalSha256": "400efd765ecff4c45a74b33880923bf3cea4e935d6c1c1017feeaa041081ae04"
-    },
-    {
-      "index": 356,
-      "start": 70273056,
-      "length": 54838,
-      "file": "patches/356.bin",
-      "sha256": "51c037631d98419452d088348c467d25d1ad86d6ebe7efb4a3462ae5e9ce40aa",
-      "originalSha256": "45422dde4365aa76c35a7637afede112500ee6f673e694d668ed97b43eb912c3"
-    },
-    {
-      "index": 357,
-      "start": 70327894,
-      "length": 104548,
-      "file": "patches/357.bin",
-      "sha256": "86498c786efae322e1cdad6d1e9fae5518a545ebce8602ae4f5a3d01b1d4f772",
-      "originalSha256": "86a9a5734f811dffa41e8a687ad32ce230a44047872a491213e8638d7798b0ce"
-    },
-    {
-      "index": 359,
-      "start": 70445739,
-      "length": 39782,
-      "file": "patches/359.bin",
-      "sha256": "082c3a2f5b87542a937fc00842a1b070bad0ca1177494943fc65a38c7de8c788",
-      "originalSha256": "d1bcccaa75d49362cb505cdadcc592731fd871d3bfecd9f46595448b11c1ad21"
-    },
-    {
-      "index": 360,
-      "start": 70485521,
-      "length": 33230,
-      "file": "patches/360.bin",
-      "sha256": "a552a4630e8cce4fc7d37070afa0503e48a2dc360215feee3e3a826cc6d9add4",
-      "originalSha256": "fa380616f251b53f114eefd0ee62c7be327b7b19b01400dcb09eb5904c072528"
-    },
-    {
-      "index": 361,
-      "start": 70518751,
-      "length": 43315,
-      "file": "patches/361.bin",
-      "sha256": "6c13810feb03887a47aeaf9bdbb2cf7472db290d9ca5e1253e664c930084bd29",
-      "originalSha256": "1886437acb7f34942e135185dafb3a5a9487436d5386e6f096154ffeb707d98a"
-    },
-    {
-      "index": 362,
-      "start": 70562066,
-      "length": 33902,
-      "file": "patches/362.bin",
-      "sha256": "59b3d9649f7edc605e0feaf35de22a29cb1ea593a2da051a5074da78cf48ef3c",
-      "originalSha256": "2ea02a999d2c84263baf9caeeb641ca56f574cfa9603fd1f4602c28ed07906a8"
-    },
-    {
-      "index": 363,
-      "start": 70595968,
-      "length": 76992,
-      "file": "patches/363.bin",
-      "sha256": "f679ff2f4927ac83eb01fc5f6d9412977588e44e5815d342e5c3c50038b3b996",
-      "originalSha256": "f1608abc0d503d7edf446289f780e83a864e3be6f9ed3a7d180d262442aff2fd"
-    },
-    {
-      "index": 364,
-      "start": 70672960,
-      "length": 48793,
-      "file": "patches/364.bin",
-      "sha256": "d7c521219bf04f965d35b183b843ba9d9e8d446832ad1c5cb402e6a0f3a54631",
-      "originalSha256": "2c769841b87f10dc36a7ffc7f5cf25e58dd024f1072c3d9dc070a8f88aa10ea9"
-    },
-    {
-      "index": 365,
-      "start": 70721753,
-      "length": 89188,
-      "file": "patches/365.bin",
-      "sha256": "d31a2de1ccb8b6037ccc244147309e684b9cda942ae83633095608b475f0733a",
-      "originalSha256": "b08b895b44799a993dc2e4db42bf23fcfcfb25ba4c40f75981b8c8610954e18e"
-    },
-    {
-      "index": 366,
-      "start": 70810941,
-      "length": 121968,
-      "file": "patches/366.bin",
-      "sha256": "2058db4d754d7f2a5fd1239bb755948a504314408fdd988b1c1232cb00d59c25",
-      "originalSha256": "49dec260711c288a551d3f69a515643b76e4779e124d5cfb93bd2d78ef0686b7"
-    },
-    {
-      "index": 378,
-      "start": 71461335,
-      "length": 59897,
-      "file": "patches/378.bin",
-      "sha256": "d8ec3d08575de722ae8c61b88bcf80a5815f0053c79f31f3f7991ffb5a2db016",
-      "originalSha256": "49b2c07d76c309e6a109a3f2019f568981f3df1136c3b6f7d12288de9488c1ff"
-    },
-    {
-      "index": 379,
-      "start": 71521232,
-      "length": 40542,
-      "file": "patches/379.bin",
-      "sha256": "1b9c9ea16726c3788c62ad1374565562ac2c5e67a10dc722a180c6990be0732a",
-      "originalSha256": "454d349b9e6dc36a085af98b48d7273ddda0a4273b278aa3dbf68373be69ac15"
+      "index": 368,
+      "kind": "native-isolated",
+      "wavSha256": "8891e354cd89e4482b58a6de6b11e47d200d2a801a3b2c9383bd8254d33f9a2b"
     }
   ],
-  "heldSpokenIndices": [
-    259,
-    275,
-    280,
-    289,
-    300,
-    304,
-    307,
-    314,
-    316,
-    318,
-    320,
-    321,
-    323,
-    344,
-    348,
-    351,
-    358
-  ],
-  "untouchedNonverbalIndices": [
-    257,
-    258,
-    367,
-    368,
-    369,
-    370,
-    371,
-    372,
-    373,
-    374,
-    375,
-    376,
-    377
-  ],
-  "excluded": "Mixed-speaker cutscenes, nonverbal Prince sounds, other speakers and Dark Prince",
-  "supportedEditions": ["Steam", "OpenJade 0.4.1"],
-  "runtimeTested": false,
-  "approvedBenchmarkUnchanged": true,
-  "unchangedOutsidePatchRanges": true
+  "historical93EncodedPayloadBytesPreserved": true,
+  "homecoming270UsesApprovedPcm": true,
+  "acceptedBaseDialoguePreserved": true,
+  "extractedSourceAudioIncluded": false,
+  "note": "Current content is embedded in the approved JTMod. Historical standalone 93 payloads remain in Git history."
 }

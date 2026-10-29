@@ -1,44 +1,72 @@
 # Warrior Within Prince — Model, Water Sword & Voice
 
-**0.5.1 · OpenJade only · by beatsdtx06**
+**0.6.0 · OpenJade only · by beatsdtx06**
 
-One mod: the Warrior Within Prince model, Water Sword from New Game, enhanced damage and boss-only blue aura, plus the approved **93-line English Prince voice preview**. The converted voice retains The Two Thrones dialogue and timing; it is not a new recording by the original actor.
+One mod containing the Warrior Within Prince model, Water Sword from New Game,
+enhanced damage and boss-only blue aura, plus expanded English Prince dialogue
+and original WW gameplay effort sounds. The conversion follows The Two Thrones
+dialogue and preserves slot timing; it is not a new performance recorded by the actor.
 
-**[Download the ZIP](https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.5.1/WW-Prince-Model-Sword-Voice-0.5.1.zip)**
+[Download the ZIP](https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.6.0/WW-Prince-Model-Sword-Voice-0.6.0.zip)
+
+The ZIP and optional raw JTMod are GitHub release assets. Git contains the
+documentation, hashes, catalog and verification/repackaging tools, not the large
+binary mod itself. The ZIP still contains exactly one JTMod.
+This version is installed by manual import of that downloaded file. Its
+repository catalog is intentionally empty: Mod Manager's catalog requires a
+repository-relative JTMod path and cannot point at these release-asset URLs.
 
 ## Install
 
-Requires an existing **OpenJade 0.5.1** installation of The Two Thrones, the supported English game audio, and **PoP Mod Manager 2.1.2** with JTMod v9 support. Other engine revisions have not been verified. Back up saves and allow space for Mod Manager's backups.
+Requires an existing OpenJade 0.5.1 TTT installation with supported English audio
+and PoP Mod Manager 2.1.2 with native JTMod v9 support. These are the tested
+versions, not a compatibility claim for every future engine/manager release.
 
 1. Download and extract the ZIP.
-2. Import **`WW-Prince-Model-Sword-Voice-0.5.1.jtmod`** into Mod Manager for **OpenJade → The Two Thrones**.
-3. Disable older WW Prince/model/sword/voice packages, enable this one, and **Apply**.
+2. Import `WW-Prince-Model-Sword-Voice-0.6.0.jtmod` into Mod Manager for **OpenJade → The Two Thrones**.
+3. Disable older WW Prince/model/sword/voice editions, enable this one, and Apply.
 4. Launch the game.
 
-**No CMD, PowerShell, extra installer, executable patch, API key, or Finish Setup step.** All three components are installed directly by Mod Manager. Original Steam-engine support has been dropped; do not install this package under Classic/Steam.
+No CMD, PowerShell, Finish Setup helper, executable patch, API key or AI runtime
+is required. Do not install this package under Classic/Steam. Back up saves and
+retain Mod Manager's backups. [Installation and recovery](docs/INSTALLATION.md).
 
-If you only imported the old 0.5.0 JTMod and never ran its helper, disable it before applying 0.5.1. If you previously ran an old helper or Mod Manager reports externally modified files, retain your backups and follow [recovery guidance](docs/INSTALLATION.md) before changing the selection.
+## Contents and voice coverage
 
-## Included files and behavior
+The ZIP contains exactly one `.jtmod`, `README.txt`, `NOTICES.txt`, and
+`SHA256SUMS.txt`. The JTMod contains:
 
-The ZIP contains exactly one `.jtmod`, `README.txt`, `NOTICES.txt`, and `SHA256SUMS.txt`.
+- 61 native `pop3.bf` model/script record edits preserving the accepted OpenJade model, sword and effects.
+- `sound/english/wwprince.ls0`: the voice payload stream.
+- `sound/english/001.sb0`: guarded English dialogue-bank replacement directing the selected records to that stream.
+- `sound/english/004.sb0`: guarded resident bank replacement containing the native WW effort sounds.
 
-The JTMod contains:
+Audio is installed inside the sound archives by Mod Manager. No whole game
+archive, game executable, DLL, source WAV collection or voice model is shipped.
+[Exact payload hashes](package-manifest.json).
 
-- Native `pop3.bf` record edits for the WW Prince, hair, medallion, Water Sword, clean-start weapon grant, enhanced damage and boss-only blue aura. These preserve the accepted OpenJade 0.4.0 model/effects records.
-- `sound/english/wwprince.ls0`: all **93 approved encoded voice clips**, unchanged.
-- `sound/english/001.sb0`: an exact-original-hash-guarded replacement bank redirecting only those 93 records to the new stream. Other records and internal audio are preserved.
+Voice coverage is **110 isolated spoken clips, 80 mapped Prince turns across 38
+in-engine scene tracks, and 28 native WW vocal resources**: 26 resident gameplay
+efforts plus two mapped death/fall sounds. Mixed scenes retain
+other characters and samples outside the Prince's mapped turns. Pre-rendered
+videos, the Dark Prince and other speakers remain original. Additional nonverbal
+resources without reliable action/speaker mapping are intentionally excluded; this is not a claim that every
+possible vocalization in the game has been replaced.
+[Detailed coverage and limitations](docs/VOICE-COVERAGE.md).
+This release retains documented narrow wording uncertainties, including the
+interrupted scene 49 endpoint and the provenance-verified scene 55 phrase;
+it does not claim perfect ASR agreement or a full-campaign listening review.
+[Release notes and known limits](docs/RELEASE-NOTES.md).
 
-These audio entries are installed **inside the game's sound archives**, not as loose files requiring another setup step. No game executable or engine DLL is bundled. [Complete operation manifest](package-manifest.json).
+## Verification and restoration
 
-Voice coverage is partial: 93 lines, about 7 minutes 53 seconds. The 17 held spoken candidates, 13 ambiguous/nonverbal records, mixed cinematics, Dark Prince, and other characters remain original. [Coverage details](docs/VOICE-COVERAGE.md).
+The release has file-level, decoding and scoped gameplay evidence; it has not
+received a complete campaign playthrough. A decoder check is not listening
+approval, and historical opening tests are not full-release campaign tests.
+[Exact test boundaries](docs/TESTS.md).
 
-## Restore and compatibility
+Close the game and choose Mod Manager's **Restore original** to uninstall.
+Keep its backups. Do not stack overlapping model or English-audio mods.
+[Compatibility](docs/COMPATIBILITY.md) · [Public packaging](BUILD.md).
 
-Close the game and use Mod Manager's **Restore original**. Keep its backups. A native Apply → Restore → Apply cycle has been checked against exact original and modded archive hashes in a disposable game copy.
-
-Do not stack this with older WW Prince editions or other mods replacing the same model or English voice bank. Compatibility with arbitrary mod stacks is not claimed. [Supported hashes](docs/COMPATIBILITY.md) · [Verification scope](docs/TESTS.md).
-
-The obsolete 0.5.0 helper-based release remains in release history for recovery; it is not the recommended download. Developer source and historical reconstruction inputs are separate from the player ZIP. [Build instructions](BUILD.md).
-
-Unofficial fan mod; no Ubisoft or voice-actor endorsement. See [notices](NOTICES.md).
+Unofficial fan mod, with no Ubisoft or voice-actor endorsement. [Notices](NOTICES.md).

@@ -1,126 +1,148 @@
-"""Build a deterministic OpenJade-only native JTMod and player ZIP.
+"""Verify and repackage the existing approved 0.6.0 JTMod; never regenerate voices.
 
-Requires the user's original English 001.sb0; never edits a game installation.
-The historical model input is kept in Git, not duplicated among player downloads.
+Only Python's standard library is required. No original game/audio files, API,
+or local developer paths are required. Existing files are never overwritten.
 """
 import argparse
 import hashlib
 import json
-import struct
-import subprocess
+from pathlib import Path, PurePosixPath
+import re
 import zipfile
-from pathlib import Path
-from jtmod import read_v9
-from native_package import native_package
+
+from jtmod import read_v9, model_fingerprint, require
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = 'WW-Prince-Model-Sword-Voice-0.5.1'
-MODEL_COMMIT = '649046bac415656de88d1198e4ae3b25013c057d'
-MODEL_FILE = 'WW-Prince-Water-Sword-OpenJade-Clean-Start-0.4.0.jtmod'
-MODEL_SHA = 'b579b7b61a8fb69d0785b636b1b8422918b9b495295d1a814d480aceca410bf0'
-BANK_SHA = 'a83de99c058b688e07c944cb97cb1a1dbb2736eefd3486196865afff5db8a3a0'
-BANK_OUT_SHA = 'efbe9ce1441782f0d23804ef79619755426dd1072b78dd8fbfb75491a2ed24d3'
-STREAM_SHA = '8b2db59b6765d6e0a3019551496991320335b7e67a37558bcbefaefd2ed16315'
+RELEASE_URL = 'https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.6.0/'
+COUNTS = dict(isolatedDialogueClips=110, inEngineSceneTracks=38,
+              mappedScenePrinceTurns=80, nativeEffortResources=28,
+              nativeResidentEffortResources=26, nativeDeathFallResources=2)
+EXCLUSIONS = ['prerendered-videos', 'dark-prince', 'other-speakers']
+OPERATIONS = [
+    (7, 'sound/english/wwprince.ls0', ''),
+    (3, 'sound/english/001.sb0', 'a83de99c058b688e07c944cb97cb1a1dbb2736eefd3486196865afff5db8a3a0'),
+    (3, 'sound/english/004.sb0', '344c400ab5d051501ed5af25d19721f2b871fbc0cf13a263639c205c6ea0bc68'),
+]
+
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
-def dump(path, value):
-    path.write_text(json.dumps(value, indent=2)+'\n', encoding='utf-8', newline='\n')
 
-def audio(bank_original, records, patches):
-    assert digest(bank_original) == BANK_SHA, 'Unsupported original English bank'
-    bank = bytearray(bank_original)
-    version, n1, n2, n3, extra_size = struct.unpack_from('<5I', bank)
-    assert version == 0x00150000
-    start2 = 28+n1*0x68
-    extra = start2+n2*0x78
-    end = extra+extra_size
-    name = b'WWPRINCE.LS0\0'.ljust(40,b'\0')
-    bank[end:end] = name
-    struct.pack_into('<I',bank,16,extra_size+len(name))
-    stream = bytearray()
-    changed = set()
-    assert len(records)==len(patches)==93
-    for record, patch in zip(records,patches):
-        assert record['index']==patch['index'] and record['row'] not in changed
-        assert 0 <= record['row'] < n2
-        changed.add(record['row'])
-        pos = start2+record['row']*0x78
-        ident,kind,length,unused,old_offset = struct.unpack_from('<5I',bank,pos)
-        assert kind==1 and length==patch['length']==record['length']
-        assert old_offset+12815346==patch['start']
-        old_name = struct.unpack_from('<I',bank,pos+0x64)[0]
-        assert bank_original[extra+old_name:].split(b'\0',1)[0].lower()==b'stream.ls0'
-        data = (ROOT/'voice'/patch['file']).read_bytes()
-        assert len(data)==length and digest(data)==patch['sha256']
-        assert len(stream)==record['streamOffset']
-        struct.pack_into('<I',bank,pos+0x10,len(stream))
-        struct.pack_into('<I',bank,pos+0x64,extra_size)
-        stream.extend(data)
-    for row in range(n2):
-        if row not in changed:
-            pos=start2+row*0x78
-            assert bank[pos:pos+0x78]==bank_original[pos:pos+0x78]
-    assert bank[extra:end]==bank_original[extra:end]
-    assert bank[end+40:]==bank_original[end:]
-    assert digest(bank)==BANK_OUT_SHA and digest(stream)==STREAM_SHA
-    return bytes(bank),bytes(stream)
+def read_json(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def safe_relative(root, value):
+    require(isinstance(value, str), 'Expected a relative path')
+    path = PurePosixPath(value)
+    require(value and not path.is_absolute() and '..' not in path.parts and ':' not in value
+            and '\\' not in value and str(path) == value, 'Unsafe repository path')
+    resolved = (root / value).resolve()
+    require(resolved.is_relative_to(root.resolve()), 'Path escapes repository')
+    return resolved
+
+
+def verified_inputs(root, artifact):
+    manifest = read_json(root / 'package-manifest.json')
+    require(manifest.get('version') == '0.6.0' and manifest.get('target') == 'openjade'
+            and manifest.get('jtmodVersion') == 9, 'This tool handles the approved OpenJade 0.6.0 release only')
+    require(manifest.get('coverageCounts') == COUNTS, 'Unexpected coverage declaration')
+    require(manifest.get('intentionalExclusions') == EXCLUSIONS, 'Missing intentional exclusions')
+    require(manifest.get('scriptsRequired') is False and manifest.get('executableFiles') == 0,
+            'Helpers/executables are not part of this release')
+    require(manifest.get('modelBins') == 61, 'Unexpected model operation count')
+    jtmod = manifest['jtmod']
+    expected_name = 'WW-Prince-Model-Sword-Voice-0.6.0.jtmod'
+    require(jtmod['file'] == expected_name and jtmod.get('downloadUrl') == RELEASE_URL + expected_name,
+            'Unexpected JTMod release-asset identity')
+    require(artifact is not None, 'Pass --artifact with the downloaded release ZIP or JTMod')
+    artifact = Path(artifact)
+    require(artifact.is_file(), 'Downloaded artifact does not exist: ' + str(artifact))
+    archive_input = artifact.suffix.lower() == '.zip'
+    if archive_input:
+        zip_record = manifest['zip']
+        expected_zip = 'WW-Prince-Model-Sword-Voice-0.6.0.zip'
+        require(zip_record['file'] == expected_zip and zip_record.get('downloadUrl') == RELEASE_URL + expected_zip,
+                'Unexpected ZIP release-asset identity')
+        require(artifact.stat().st_size == zip_record['bytes'] and digest(artifact.read_bytes()) == zip_record['sha256'],
+                'Downloaded ZIP hash/size mismatch')
+        with zipfile.ZipFile(artifact) as archive:
+            require(sorted(archive.namelist()) == sorted([expected_name,'README.txt','NOTICES.txt','SHA256SUMS.txt']),
+                    'Unexpected or duplicate downloaded ZIP members')
+            require(archive.testzip() is None, 'Downloaded ZIP CRC failed')
+            package = archive.read(expected_name)
+    else:
+        require(artifact.suffix.lower() == '.jtmod', 'Artifact must be a release ZIP or JTMod')
+        package = artifact.read_bytes()
+    require(re.fullmatch('[0-9a-f]{64}', str(jtmod.get('sha256'))) is not None
+            and digest(package) == jtmod['sha256'] and len(package) == jtmod['bytes'], 'JTMod hash/size mismatch')
+    decoded = read_v9(package)
+    require(decoded['game'] == b'T2T' and decoded['archive'] == b'pop3.bf', 'Wrong game/archive')
+    require(decoded['metadata'][2] == b'0.6.0' and decoded['metadata'][1] == b'beatsdtx06', 'Wrong package metadata')
+    require(decoded['binCount'] == 61, 'Wrong model operation count')
+    require(model_fingerprint(decoded) == manifest.get('modelPayloadSha256'), 'Model prerequisite/operation hash mismatch')
+    ops = decoded['operations']
+    require([(op['mode'], op['path'], op['originalSha256']) for op in ops] == OPERATIONS,
+            'Unexpected native operations, ordering or original hash guards')
+    actual = [dict(op, bytes=len(decoded['files'][op['path']]),
+                   sha256=digest(decoded['files'][op['path']])) for op in ops]
+    require(actual == manifest.get('operations'), 'Native payload manifest mismatch')
+    pmm = read_json(root / 'pmm_manifest.json')
+    require(pmm == {'mods': []}, 'This release uses manual import; unsupported URL or stale catalog entry found')
+    docs = {}
+    for leaf in ('README.txt', 'NOTICES.txt'):
+        record = manifest['playerDocs'][leaf]
+        require(record['file'] == 'docs/player/' + leaf, 'Wrong player documentation path')
+        contents = safe_relative(root, record['file']).read_bytes()
+        require(digest(contents) == record['sha256'], 'Player documentation hash mismatch: ' + leaf)
+        # Match a drive-letter token, not the final "s:/" within "https://".
+        require(not re.search(rb'(?<![A-Za-z0-9_])[A-Za-z]:[\\/]', contents),
+                'Private local path in player documentation')
+        docs[leaf] = contents
+    members = {expected_name: package, **docs,
+               'SHA256SUMS.txt': (digest(package) + '  ' + expected_name + '\n').encode()}
+    if archive_input:
+        verify_zip(artifact,members)
+    return manifest, members
+
+
+def write_zip(path, members):
+    require(not path.exists(), 'Refusing to overwrite ' + str(path))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(path, 'x', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for name, data in sorted(members.items()):
+            entry = zipfile.ZipInfo(name, (2026, 10, 29, 0, 0, 0))
+            entry.compress_type = zipfile.ZIP_DEFLATED
+            entry.external_attr = 0o100644 << 16
+            archive.writestr(entry, data, compresslevel=9)
+    verify_zip(path, members)
+
+
+def verify_zip(path, members):
+    with zipfile.ZipFile(path) as archive:
+        require(sorted(archive.namelist()) == sorted(members), 'Unexpected or duplicated ZIP contents')
+        require(archive.testzip() is None, 'ZIP CRC failed')
+        require(all(archive.read(name) == value for name, value in members.items()), 'ZIP payload mismatch')
+
 
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--bank',required=True,type=Path)
-    parser.add_argument('--model-input',type=Path)
-    parser.add_argument('--record-map-from-probe',type=Path,help='One-time developer migration from verified probe report')
-    args=parser.parse_args()
-    if args.record_map_from_probe:
-        probe=json.loads(args.record_map_from_probe.read_text())
-        assert probe['bankSha256']==BANK_OUT_SHA and probe['streamSha256']==STREAM_SHA
-        dump(ROOT/'source/voice-record-map.json',{'format':1,'records':probe['records']})
-    records=json.loads((ROOT/'source/voice-record-map.json').read_text())['records']
-    voice=json.loads((ROOT/'voice/manifest.json').read_text())
-    patches=voice['patches']
-    assert {p['file'] for p in patches}=={'patches/'+p.name for p in (ROOT/'voice/patches').glob('*.bin')}
-    bank,stream=audio(args.bank.read_bytes(),records,patches)
-    model=args.model_input.read_bytes() if args.model_input else subprocess.check_output(['git','show',MODEL_COMMIT+':'+MODEL_FILE],cwd=ROOT)
-    assert digest(model)==MODEL_SHA
-    result=native_package(model,stream,bank,BANK_SHA,release=True)
-    decoded=read_v9(result)
-    assert [op['mode'] for op in decoded['operations']]==[7,3]
-    assert decoded['files']=={'sound/english/wwprince.ls0':stream,'sound/english/001.sb0':bank}
-    out=ROOT/'assets'/(NAME+'.jtmod')
-    out.parent.mkdir(parents=True,exist_ok=True)
-    out.write_bytes(result)
-    manifest={'version':'0.5.1','target':'openjade','engineTested':'0.5.1','jtmodVersion':9,
-        'scriptsRequired':False,'executableFiles':0,'voiceLines':93,'modelSourceSha256':MODEL_SHA,
-        'modelBins':decoded['binCount'],'modelAppliedSha256':'3d4b138b0babfe026669db584b5bed29b25ddca94f23172cfa6c30f288c3409d',
-        'operations':[dict(op,bytes=len(decoded['files'][op['path']]),sha256=digest(decoded['files'][op['path']])) for op in decoded['operations']],
-        'jtmod':{'file':'assets/'+out.name,'bytes':len(result),'sha256':digest(result)}}
-    dump(ROOT/'package-manifest.json',manifest)
-    item={'id':'ww-prince-model-sword-voice','name':'WW Prince - Model, Water Sword and Voice (OpenJade)',
-        'author':'beatsdtx06','version':'0.5.1','description':decoded['metadata'][3].decode(),
-        'file':'assets/'+out.name,'game':'T2T','type':'mod','targets':'openjade','size':len(result),'sha256':digest(result)}
-    dump(ROOT/'pmm_manifest.json',{'mods':[item]})
-    readme=('WW PRINCE - MODEL, WATER SWORD & VOICE 0.5.1\nOPENJADE ONLY - NOT ORIGINAL STEAM ENGINE\n\n'
-        'Requires an existing OpenJade 0.5.1 game with supported English audio and PoP Mod Manager 2.1.2.\n'
-        '1. Extract this ZIP.\n2. Import '+out.name+' into Mod Manager for OpenJade The Two Thrones.\n'
-        '3. Disable older WW Prince/model/sword/voice packages. Enable this one and Apply.\n4. Launch the game.\n\n'
-        'No CMD, PowerShell, installer, executable patch, or extra setup.\n'
-        'Includes WW Prince model, clean-start Water Sword, enhanced damage, boss-only blue aura,\n'
-        'and 93 approved English AI-converted spoken lines. Voice coverage is partial.\n'
-        'Back up saves. Other language banks and overlapping sound/model mods are not supported.\n'
-        'Use Mod Manager Restore original to uninstall; its backups must be retained.\n'
-        'If you previously RAN the old 0.5.0 helper, see the repository recovery guide before upgrading.\n\n'
-        'https://github.com/beatsdtx06/ww-prince-water-sword\n')
-    zip_path=ROOT/'assets'/(NAME+'.zip')
-    contents={out.name:result,'README.txt':readme.encode(),'NOTICES.txt':(ROOT/'NOTICES.md').read_bytes(),
-        'SHA256SUMS.txt':(digest(result)+'  '+out.name+'\n').encode()}
-    with zipfile.ZipFile(zip_path,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-        for name,data in sorted(contents.items()):
-            entry=zipfile.ZipInfo(name,(2026,10,29,0,0,0));entry.compress_type=zipfile.ZIP_DEFLATED
-            entry.external_attr=0o100644<<16
-            z.writestr(entry,data,compresslevel=9)
-    (ROOT/'SHA256SUMS.txt').write_text(''.join(digest(p.read_bytes())+'  assets/'+p.name+'\n' for p in (out,zip_path)),encoding='utf-8',newline='\n')
-    print(json.dumps({'jtmod':manifest['jtmod'],'zip':{'file':zip_path.name,'bytes':zip_path.stat().st_size,'sha256':digest(zip_path.read_bytes())}}))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT, help='Repository root (defaults beside tools/)')
+    parser.add_argument('--artifact', type=Path, required=True, help='Previously downloaded release ZIP or JTMod; no automatic download')
+    parser.add_argument('--out', type=Path, help='New ZIP path; default dist/ release filename')
+    parser.add_argument('--verify-only', action='store_true')
+    args = parser.parse_args()
+    manifest, members = verified_inputs(args.root,args.artifact)
+    result = dict(status='VERIFIED_EXISTING_JTMOD', packageSha256=manifest['jtmod']['sha256'],
+                  scope='Offline package/manifest integrity only; not a game or listening test')
+    if not args.verify_only:
+        out = args.out or args.root / 'dist/WW-Prince-Model-Sword-Voice-0.6.0.zip'
+        require(out.suffix.lower() == '.zip', 'Output must be a ZIP file')
+        write_zip(out, members)
+        result.update(zip=str(out), zipSha256=digest(out.read_bytes()), zipMembers=sorted(members))
+    print(json.dumps(result, indent=2))
 
-if __name__=='__main__':main()
+
+if __name__ == '__main__':
+    main()

@@ -1,2 +1,2 @@
-5cc760f951b17619b1a7b935c68bc2a2bcbeb48c6af3178df4f910e8037b0f71  assets/WW-Prince-Model-Sword-Voice-0.5.1.jtmod
-460b9e1d451e54af28917a5fe520bb35b2c3f6773caa2a8dfdf49d598dad4ced  assets/WW-Prince-Model-Sword-Voice-0.5.1.zip
+df7bad0069c7e263f1d56a96b63b2da6a6ddc10175dc9911c6d3aee258cce47b  WW-Prince-Model-Sword-Voice-0.6.0.jtmod
+ab8d755dcbe1c193c11c868f7fff0525f9e3e9eb5ff5ddbbef83431da17b6f20  WW-Prince-Model-Sword-Voice-0.6.0.zip

@@ -1,22 +1,44 @@
-# Build the OpenJade-only package
+# Verify and repackage the approved release
 
-Players only need the release ZIP and Mod Manager. These instructions are for developers.
-
-Use Python 3.11+ and a full clone with history. Extract the original English `sound/english/001.sb0` from your legally owned game using a compatible asset tool; do not use a modified bank.
+Players need only the release ZIP and Mod Manager. Download that ZIP (or the raw
+JTMod) from the GitHub release first. It is a release asset, not part of a Git
+clone. Developers can then use Python 3.11+ (standard library only):
 
 ```powershell
-python tools/package_release.py --bank "X:/Extracted/sound/english/001.sb0"
-python tools/test_release.py
+python tools/test_release.py --self-test
+python tools/test_release.py --artifact downloads/WW-Prince-Model-Sword-Voice-0.6.0.zip
+python tools/package_release.py --artifact downloads/WW-Prince-Model-Sword-Voice-0.6.0.zip --out dist/WW-Prince-Model-Sword-Voice-0.6.0.zip
+python tools/test_release.py --artifact downloads/WW-Prince-Model-Sword-Voice-0.6.0.jtmod --zip dist/WW-Prince-Model-Sword-Voice-0.6.0.zip
 ```
 
-The bank SHA-256 must be `a83de99c058b688e07c944cb97cb1a1dbb2736eefd3486196865afff5db8a3a0`. The build rejects other inputs. It modifies only 93 stream/name references, adds a stream filename to the bank's extra table, and preserves the remaining bank data. The compact stream is made from the exact approved files in `voice/patches/`; no AI regeneration occurs.
+Use the actual path where you saved the download; either ZIP or JTMod is accepted
+by `--artifact`. Nothing is downloaded automatically. ZIP input is read and
+validated in memory, not extracted into the repository. The packager validates
+the JTMod integrity trailer, complete file SHA-256, game/version, 61 model
+operations, metadata-independent model fingerprint, three native operations,
+original-bank guards, embedded payload hashes, empty manual-import catalog and player-doc
+hashes. ZIP contents and timestamps are fixed. It refuses to overwrite an
+existing output; choose a new output path when comparing builds.
 
-The model input is read from commit `649046bac415656de88d1198e4ae3b25013c057d`, path `WW-Prince-Water-Sword-OpenJade-Clean-Start-0.4.0.jtmod`, SHA-256 `b579b7b61a8fb69d0785b636b1b8422918b9b495295d1a814d480aceca410bf0`. Alternatively supply that exact historical file using `--model-input`. No whole BF archive is shipped.
+It does **not** regenerate voice conversions, rebuild game banks from source,
+change manifests, patch an installation, or update the repository. A clean public
+clone alone cannot produce a mod binary: the hash-matching downloaded release
+asset is required. These tools can repackage that existing asset, not regenerate
+the JTMod from private voice-processing inputs. No API, source game audio or AI
+model is a public-repackaging dependency.
 
-The deterministic build emits `assets/WW-Prince-Model-Sword-Voice-0.5.1.jtmod`, the corresponding ZIP, `package-manifest.json`, an OpenJade-only `pmm_manifest.json` entry, and `SHA256SUMS.txt`. ZIP timestamps are fixed. JTMod v9 uses native stream-add operation 7 and guarded bank-replacement operation 3; no added game files, helper scripts or executable operations are emitted.
+The old 0.5.1 93-line synthesizer is retired. `tools/native_package.py` now refuses
+synthesis so stale scripts cannot silently overwrite the expanded release. Its
+historical implementation and the old development payloads remain recoverable
+from Git history; they are not current player dependencies.
+The historical model reconstruction archive is likewise recoverable from old
+commits. `source/voice-record-map.json` is retained as historical row provenance
+for internal preservation checks, not as a recipe for rebuilding this release.
 
-`tools/jtmod.py` independently reads the output and reconstructs its model-only v3 view. The historical `source/model-record-sources-0.4.0.zip` is retained for model reconstruction; its historical machine-specific paths need configuration. `source/voice-record-map.json` supplies the exact 93 row mappings.
-
-`voice/manifest.json` describes the accepted historical in-place voice payload ranges for provenance; its whole-archive output hash is not the new native sound-archive hash. Current operation hashes are in `package-manifest.json`.
-
-Historical installers are recoverable from Git/release 0.5.0, but are removed from the current build and player download.
+The production JTMod was assembled by a separate offline, hash-bound workflow:
+the accepted base dialogue and tested opening edits were retained (including the
+later approved PCM homecoming, record 270, rather than its historical encoding);
+new speech received wording, timing, PCM-format and decoder checks; other scene
+speakers and protected samples were checked; native efforts were rebuilt from
+original WW PCM with preservation checks. Those checks are described in
+`docs/TESTS.md`, not re-run by this public repackager.
