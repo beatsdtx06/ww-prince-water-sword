@@ -1,31 +1,18 @@
 {
   "mods": [
     {
-      "id": "ww-prince-water-steam-clean-start",
-      "name": "WW Prince and Water Sword - Steam Clean Start",
+      "id": "ww-prince-model-sword-voice",
+      "name": "WW Prince - Model, Water Sword and Voice",
       "author": "beatsdtx06",
-      "version": "0.4.0",
-      "description": "Steam edition with the Warrior Within Prince and Water Sword equipped from New Game. Requires Mod Manager large assets and the included reversible Steam interpreter patch.",
-      "file": "WW-Prince-Water-Sword-Steam-Clean-Start-0.4.0.jtmod",
+      "version": "0.5.0",
+      "description": "One JTMod for Steam and OpenJade 0.4.1. Apply, then run the included Finish-Setup.cmd inside the game folder. Model + New Game Water Sword + 93-line English AI voice preview. OpenJade retains enhanced damage and boss-only blue aura. Steam needs Large assets. Clean base required; replaces older separate editions.",
+      "file": "assets/WW-Prince-Model-Sword-Voice-0.5.0.jtmod",
       "game": "T2T",
       "type": "mod",
-      "targets": "classic",
-      "size": 3561257,
-      "sha256": "faa674ce17ba785c1d6e9bc7d3122732b722a8d8a7ebf53a066f982c2b5b1d29",
-      "image": "steam-gameplay.jpg"
-    },
-    {
-      "id": "ww-prince-water-openjade-clean-start",
-      "name": "WW Prince and Water Sword - OpenJade Clean Start",
-      "author": "beatsdtx06",
-      "version": "0.4.0",
-      "description": "OpenJade 0.4.1 edition with the Warrior Within Prince, persistent Water Sword from New Game, enhanced damage and boss-only blue aura.",
-      "file": "WW-Prince-Water-Sword-OpenJade-Clean-Start-0.4.0.jtmod",
-      "game": "T2T",
-      "type": "mod",
-      "targets": "openjade",
-      "size": 8971476,
-      "sha256": "b579b7b61a8fb69d0785b636b1b8422918b9b495295d1a814d480aceca410bf0"
+      "targets": "both",
+      "size": 43432217,
+      "sha256": "ec41456c55f272c357a342583d22c8ea2b360c95f2a3c630cc5a15ee8cdd5eb0",
+      "image": "assets/steam-gameplay.jpg"
     }
   ]
 }

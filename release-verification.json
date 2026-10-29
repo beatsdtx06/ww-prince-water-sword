@@ -1,0 +1,50 @@
+{
+  "version": "0.5.0",
+  "date": "2026-10-29",
+  "artifact": "assets/WW-Prince-Model-Sword-Voice-0.5.0.jtmod",
+  "artifactBytes": 43432217,
+  "artifactSha256": "ec41456c55f272c357a342583d22c8ea2b360c95f2a3c630cc5a15ee8cdd5eb0",
+  "playerJtmodFiles": 1,
+  "formatVersion": 9,
+  "embeddedFiles": 111,
+  "voiceLines": 93,
+  "finishSetupRequired": true,
+  "checks": {
+    "deterministicRebuild": "PASS",
+    "unchangedAcceptedSteamNativeBfEdits": "PASS",
+    "safePathsAndCompleteEmbeddedManifest": "PASS",
+    "approvedVoicePayloadsUnchanged": "PASS",
+    "heldAndNonverbalClipsExcluded": "PASS",
+    "currentRuntimeTextPrivatePathAndCredentialMarkerScan": "PASS",
+    "singleBothTargetsCatalogEntry": "PASS",
+    "steamExtractedInstallCheckRepeatRestore": "PASS",
+    "openjadeExtractedInstallCheckRepeatRestore": "PASS",
+    "exactAcceptedOpenjadeFullEffectsOutput": "PASS",
+    "unchangedVoiceBytesOutside93Ranges": "PASS",
+    "unchangedFatAndByteExactVoiceRestore": "PASS",
+    "wrongModelAndCorruptBundleRefused": "PASS",
+    "openjadeCorruptBackupAndDeltaRefusedWithoutChangingOriginal": "PASS",
+    "standaloneVoiceInstallerSafetyCases": "12 PASS",
+    "nativeModManager": {
+      "version": "2.1.2",
+      "isolation": "Separate application data directory and disposable clean game folder; installed games and existing mod selections untouched",
+      "finalArtifactImportedAndApplied": "PASS",
+      "all111AddedFilesByteExact": "PASS",
+      "nativeBfOutput": "cb9424bf647d6a3eac08ab139dbc68ae4024378ef43c43f00f18c8ab8a1c4644"
+    }
+  },
+  "expectedAfterFinishSetup": {
+    "steamBf": "cb9424bf647d6a3eac08ab139dbc68ae4024378ef43c43f00f18c8ab8a1c4644",
+    "openjadeBf": "3d4b138b0babfe026669db584b5bed29b25ddca94f23172cfa6c30f288c3409d",
+    "sharedVoiceBank": "67459b29e5cb349d60b8165822e79bfd9a078ea98213ee9e1677d93f765e0dc8",
+    "steamExe": "f6dd6820334918d915c8d6b70a60b799d3e85b3be9c5a3245d240768be734208"
+  },
+  "limitations": [
+    "Partial 93-line voice preview, not a whole-game voice replacement.",
+    "No fresh full-campaign playthrough or playback of every converted line.",
+    "The copied Steam launcher refused to start outside its regular install location; edition-specific accepted archive states are retained instead of forcing OpenJade scripts onto Steam.",
+    "Native Mod Manager application was tested for the common package; edition-specific Finish Setup was tested on disposable real archive copies.",
+    "Helpers are individually guarded, not one transaction across all components.",
+    "Restore helper changes before changing or removing the Mod Manager selection, especially OpenJade's post-apply archive delta."
+  ]
+}

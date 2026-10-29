@@ -1,0 +1,558 @@
+{
+  "name": "WW-Prince-Model-Sword-Voice-0.5.0",
+  "version": "0.5.0",
+  "voicePreview": true,
+  "voiceLines": 93,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1701,
+      "sha256": "4333dbc30c7fe43080a092383e745665626be1e149a5ed7ba7ca84dd6938fa06"
+    },
+    {
+      "path": "Finish-Setup.cmd",
+      "bytes": 171,
+      "sha256": "83185690965867b92e284f99c10b20d4abc7ce7d7371c379f836fac36af427fc"
+    },
+    {
+      "path": "Manage-Mod.cmd",
+      "bytes": 155,
+      "sha256": "a2d710fa966fc99117b0654db718b2d48857d4ebaca2162053d1d6b09cdbab8e"
+    },
+    {
+      "path": "Manage-Mod.ps1",
+      "bytes": 7654,
+      "sha256": "1f3734d4b881de5c2113c697e1814f30ae03c56a6f9c021b7ac8e77196b22c17"
+    },
+    {
+      "path": "NOTICES.md",
+      "bytes": 1667,
+      "sha256": "e302bbad7849510da3731d8388a04b4089b3446469a9ec371a0bbaeefea14010"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5470,
+      "sha256": "daab36dd63d10a8c285f4aca849ab60c1480abecfb7c432a9b5d9cfdc64edb03"
+    },
+    {
+      "path": "assets/steam-gameplay.jpg",
+      "bytes": 56887,
+      "sha256": "c48b4f94697c291e3563579a3ebe1c80d755c11f75b5c4228d58e230375b20bf"
+    },
+    {
+      "path": "docs/COMPATIBILITY.md",
+      "bytes": 1350,
+      "sha256": "3d91839994b012f626fb94c571bd271b8f93b3ee145f02df9741ca1b9ea1f26f"
+    },
+    {
+      "path": "docs/INSTALLATION.md",
+      "bytes": 2651,
+      "sha256": "28eeb75cbbbd005de524d31a06a4a027d5fe3d77d2b9e99c1b5f0ea429640757"
+    },
+    {
+      "path": "docs/TESTS.md",
+      "bytes": 1962,
+      "sha256": "71c0b78cc173ff8f9c34fceafe64bce343ec7dc1d4ee03af285390e5dcf27d00"
+    },
+    {
+      "path": "docs/VOICE-COVERAGE.md",
+      "bytes": 1452,
+      "sha256": "f4dc2c3dee241d00734523ee1e44c829652bff6300af2bd8c5bea6236d126c37"
+    },
+    {
+      "path": "docs/model-verification-0.4.0.json",
+      "bytes": 2890,
+      "sha256": "144cfcf8fce679137080417c8012d9743733c80a2aaece6d62d9385d6e1adbeb"
+    },
+    {
+      "path": "installers/Install-Steam-Water-Sword.ps1",
+      "bytes": 4958,
+      "sha256": "b1c2ce493e3fbec5935d9cec7097b1bc0ab5df7fe7459db05d7629facd93a0c3"
+    },
+    {
+      "path": "installers/Manage-OpenJade-Effects.ps1",
+      "bytes": 5932,
+      "sha256": "bc55002a89a31b779d889e5c966e61f3bd1c73f1ff0879f48ad5aa4eaf7cbcfd"
+    },
+    {
+      "path": "installers/openjade-effects.delta.gz",
+      "bytes": 36615954,
+      "sha256": "4b02628471c109272c3efe52c58cdf4f273c1b4b7f372219cfb834f8a30abb7f"
+    },
+    {
+      "path": "voice/Manage-Voice.ps1",
+      "bytes": 7651,
+      "sha256": "06c84d0bc0700098a531b1af60ea3eb8246f50a9bebe66a0167b1402d552ec9f"
+    },
+    {
+      "path": "voice/manifest.json",
+      "bytes": 27935,
+      "sha256": "8ab6135185a618d9acedb397af42ed685e1fd8e9c6551b163e6a4f2ffb57fcb2"
+    },
+    {
+      "path": "voice/patches/260.bin",
+      "bytes": 18159,
+      "sha256": "c79191867a2733dcabe0b5ca1561c8f5c1acb29f0a4c92fdb88ff1898e85b531"
+    },
+    {
+      "path": "voice/patches/261.bin",
+      "bytes": 35411,
+      "sha256": "768d131a97eae036dc1ad965f46362e6a4637a2c8858a9f19df58b77d3cb19fd"
+    },
+    {
+      "path": "voice/patches/262.bin",
+      "bytes": 14363,
+      "sha256": "332d2900901e6941aa0165ebacfaed2cee8ff708443de948240193aab5600f57"
+    },
+    {
+      "path": "voice/patches/263.bin",
+      "bytes": 8806,
+      "sha256": "757774ae0ee458cd9d06b7f84ca40999ad6855d1da6ee31b29db998bbe70de3c"
+    },
+    {
+      "path": "voice/patches/264.bin",
+      "bytes": 24714,
+      "sha256": "c75346ed3ef387aaef57f38d2a238f911730ab4d5a172f32f2a87b22cce31d1a"
+    },
+    {
+      "path": "voice/patches/265.bin",
+      "bytes": 9993,
+      "sha256": "4dc0873e47928c407ff0f8460d97d5b766b4a812cdc8c5074947d2e0af1a1104"
+    },
+    {
+      "path": "voice/patches/266.bin",
+      "bytes": 37763,
+      "sha256": "62ae54a5b5844bf12af5a6e49c9702d8f31e02f2e4b92b67add032891be48a76"
+    },
+    {
+      "path": "voice/patches/267.bin",
+      "bytes": 76394,
+      "sha256": "cd40f3e55b290f2e6431b971cf1698798adfdba8a27b5813706f2ec9e178d1cd"
+    },
+    {
+      "path": "voice/patches/268.bin",
+      "bytes": 65426,
+      "sha256": "18695a15904d38ce217ab266c7a2254af2ea83895f7c063cef91b014ab324778"
+    },
+    {
+      "path": "voice/patches/269.bin",
+      "bytes": 71660,
+      "sha256": "8431ba0e2527e1d813be24b9abded1d5601180d3417f77676f8460dbfaed4684"
+    },
+    {
+      "path": "voice/patches/270.bin",
+      "bytes": 231716,
+      "sha256": "fd482118d7e07f34dcbf8feb53629d632ce2bfb3b3d7b3e62785234e08a23304"
+    },
+    {
+      "path": "voice/patches/271.bin",
+      "bytes": 96420,
+      "sha256": "3118c6b9678bd24a2ef0f7d6752a17418736bcf48fda79b826badbd41f1662df"
+    },
+    {
+      "path": "voice/patches/272.bin",
+      "bytes": 140896,
+      "sha256": "ca2043a4b5bacd2ef5ee3aace281dbf9ce2ad9c32e40157ca29a573e878a6c81"
+    },
+    {
+      "path": "voice/patches/273.bin",
+      "bytes": 151673,
+      "sha256": "b68e1cdf248cfe8be379193cae9fdc84239c8614b1afc612f0badaa516a317a6"
+    },
+    {
+      "path": "voice/patches/274.bin",
+      "bytes": 158170,
+      "sha256": "054aff3a4e15bab79b7898fe963d28942f6af8a61dc204688c25c2b3944107bb"
+    },
+    {
+      "path": "voice/patches/276.bin",
+      "bytes": 275483,
+      "sha256": "6dc0a970856d3b79272024a5381ed3943160a44b4f5eb8f57f764f11374f376c"
+    },
+    {
+      "path": "voice/patches/277.bin",
+      "bytes": 48755,
+      "sha256": "b56208f12cb77964009121d0969efc2a42b3db150dadc043676c6099e1b3bd40"
+    },
+    {
+      "path": "voice/patches/278.bin",
+      "bytes": 35852,
+      "sha256": "482b16a19679c7ec6691f902a5ceff0b92d6599c7de64dc07693ab3aa6ce5570"
+    },
+    {
+      "path": "voice/patches/279.bin",
+      "bytes": 18310,
+      "sha256": "4c4670faa20664c72c025915746cac463175d8a3189e9611b7c30e706c5b1567"
+    },
+    {
+      "path": "voice/patches/281.bin",
+      "bytes": 42560,
+      "sha256": "a81616adfa2b1cd475e04e37d02ec5a57ff373d6e01f29120a678b171d6c8d0b"
+    },
+    {
+      "path": "voice/patches/282.bin",
+      "bytes": 44124,
+      "sha256": "c55aff87460cea6da8d5a254565d8496062acfacfb62a715980daec4365cd0c8"
+    },
+    {
+      "path": "voice/patches/283.bin",
+      "bytes": 27006,
+      "sha256": "6d92a9441256a0eb2b9a56b8da29ad2213003e310872f4d096a6ec3bfb63d2f6"
+    },
+    {
+      "path": "voice/patches/284.bin",
+      "bytes": 11958,
+      "sha256": "d4869c58092a55bbbe053ac02509559b6be3b56dfb1c76f9f3b881058b05d64d"
+    },
+    {
+      "path": "voice/patches/285.bin",
+      "bytes": 26995,
+      "sha256": "7c7465ad9c6bf47350c8a7e5e4ea9354394979819c709ad3c02d9ca148ea46a2"
+    },
+    {
+      "path": "voice/patches/286.bin",
+      "bytes": 10578,
+      "sha256": "9d0a1ce355b2c5a2269bc954ccf02ab8940e787b9293f94495a4f995791fa634"
+    },
+    {
+      "path": "voice/patches/287.bin",
+      "bytes": 9949,
+      "sha256": "291f3baed5d1f9ccd1e9d86a087d87d51bf76803e74b1b497296ec2d0e9bbdbd"
+    },
+    {
+      "path": "voice/patches/288.bin",
+      "bytes": 42033,
+      "sha256": "36a8f44d763e24c948733faff1d686e26a0075a86b1acac0e214caab78c3c874"
+    },
+    {
+      "path": "voice/patches/290.bin",
+      "bytes": 77862,
+      "sha256": "61a1ad284bb268d390b10086f29f47bcb1585c819cfdd6949e2a0ee6d2a66b9c"
+    },
+    {
+      "path": "voice/patches/291.bin",
+      "bytes": 50527,
+      "sha256": "b1ca4371cc3f11f5966ef5ca66828485f1adc81b0d16df9593002b4f3ca3532d"
+    },
+    {
+      "path": "voice/patches/292.bin",
+      "bytes": 22774,
+      "sha256": "6bddb52852cb1be48dab5ea9b2f34301d39ff8136f21a4168e2762aa8a15878f"
+    },
+    {
+      "path": "voice/patches/293.bin",
+      "bytes": 38666,
+      "sha256": "4b25619a5879bce2ffceb8fb40fc215409772996e3a420c9691282332f17ca7a"
+    },
+    {
+      "path": "voice/patches/294.bin",
+      "bytes": 17175,
+      "sha256": "0c75d5b1d61695923befadb86120be2a94380a6fb971243985f0d0626cb2fc45"
+    },
+    {
+      "path": "voice/patches/295.bin",
+      "bytes": 21918,
+      "sha256": "7647f7047cb0fff608e247146c7b55c6cf9627831a608f805023585c77d24136"
+    },
+    {
+      "path": "voice/patches/296.bin",
+      "bytes": 42120,
+      "sha256": "01a5db811174c6b0ba3336e02655cca46b822dcda3e6ffd0877c2a53e7fe3011"
+    },
+    {
+      "path": "voice/patches/297.bin",
+      "bytes": 189440,
+      "sha256": "45f2b7af54fb8e043fae7a669f23f984f174a02359bb5b754cd0630dfb528531"
+    },
+    {
+      "path": "voice/patches/298.bin",
+      "bytes": 56626,
+      "sha256": "4af58b04e8c23ac2c7ba08ed216bc4f37f39d7bd368a4216707bd4df6d90fb79"
+    },
+    {
+      "path": "voice/patches/299.bin",
+      "bytes": 23093,
+      "sha256": "8a42c8b0d20910fbc3f85bd078cbae05e869e813201820c7358a525ffd649b1d"
+    },
+    {
+      "path": "voice/patches/301.bin",
+      "bytes": 65876,
+      "sha256": "0393bd6a796aa1bd997544fdb41837f136d569ab57ec13a56a5e7c9d78e21855"
+    },
+    {
+      "path": "voice/patches/302.bin",
+      "bytes": 69568,
+      "sha256": "618c3a87f8de327074693131459b962436f1a783d7be034c0033368c0810e101"
+    },
+    {
+      "path": "voice/patches/303.bin",
+      "bytes": 22211,
+      "sha256": "4a0ae7db7bb77ebf43e8462d00cc5b8b7f78935a44170787693641d9c5dfa5b2"
+    },
+    {
+      "path": "voice/patches/305.bin",
+      "bytes": 118615,
+      "sha256": "7a5099e58dc2e85e69cd64aafed6a8393b4789670478b2ae13835bd9a5650508"
+    },
+    {
+      "path": "voice/patches/306.bin",
+      "bytes": 51128,
+      "sha256": "195481b48dc97f1f2b2daa7bbbbe5b6674f99c5ebcc63684f32a5b4db62bf90c"
+    },
+    {
+      "path": "voice/patches/308.bin",
+      "bytes": 58490,
+      "sha256": "614f82f98062efe3907772d02aef2ff2cd7d5d784536bd7f174c35b8444424bc"
+    },
+    {
+      "path": "voice/patches/309.bin",
+      "bytes": 15213,
+      "sha256": "cd37e7fa7bcc015fb9c8e1f1703b49a2fe893ac760e376eecfd2cc1968a41f67"
+    },
+    {
+      "path": "voice/patches/310.bin",
+      "bytes": 77193,
+      "sha256": "cef4c52d4c5fa48658ec66a850bc51845d6a3cfb1a7d9798be6a3eac1fda168a"
+    },
+    {
+      "path": "voice/patches/311.bin",
+      "bytes": 40381,
+      "sha256": "bc927e8c7d2f5d5d6d8fabe8c4c671985456063e4b8b5df0f3e4606e9e1aad27"
+    },
+    {
+      "path": "voice/patches/312.bin",
+      "bytes": 128826,
+      "sha256": "ba3d061383c5f48494249d76da5302a1224cf1379f7cb642ba3ebf0849eb49c3"
+    },
+    {
+      "path": "voice/patches/313.bin",
+      "bytes": 89262,
+      "sha256": "25bd7fd3a725d5ef1dad2cdff8e2d224cffb14966d956313519bb9f6d343191e"
+    },
+    {
+      "path": "voice/patches/315.bin",
+      "bytes": 19471,
+      "sha256": "ea6fdece486c19a84ac26255c7fd1a6ba767963d900557c1b05de15af2ababc7"
+    },
+    {
+      "path": "voice/patches/317.bin",
+      "bytes": 37533,
+      "sha256": "54b7059a3345f76e13a1741b1bd66174fc87a31552a0673d675c901edac8629e"
+    },
+    {
+      "path": "voice/patches/319.bin",
+      "bytes": 53839,
+      "sha256": "a17faa7c258cec2462fb7e8d002ae39d1dd0274f44df319b101cdda428f4bbdd"
+    },
+    {
+      "path": "voice/patches/322.bin",
+      "bytes": 22634,
+      "sha256": "1ba6ec87bf96faf232dfa0ff624a6466815dd0d3e704b83cd6591e591c74f701"
+    },
+    {
+      "path": "voice/patches/324.bin",
+      "bytes": 38936,
+      "sha256": "52bb5d78f416b4a81dae8af549103a4691fc8a88327c7e9a91a55c61ec2f5262"
+    },
+    {
+      "path": "voice/patches/325.bin",
+      "bytes": 16117,
+      "sha256": "cc11a6c4a5d0b30863582236fe284a6f2bd7c9f0d1de45cab42149a141fcc676"
+    },
+    {
+      "path": "voice/patches/326.bin",
+      "bytes": 35620,
+      "sha256": "e745585a45aec38832fe5f498583f54c0f1c86a6d97d0a583a4ce3997c6e5026"
+    },
+    {
+      "path": "voice/patches/327.bin",
+      "bytes": 84564,
+      "sha256": "9563236c6065122adc9739cb82fb6af2a98950dc20a1f5784140ae014823710e"
+    },
+    {
+      "path": "voice/patches/328.bin",
+      "bytes": 40885,
+      "sha256": "0633436245017ac8cb0479149880e7f8a063affe03cc2ee55a19e0610d3e3435"
+    },
+    {
+      "path": "voice/patches/329.bin",
+      "bytes": 67602,
+      "sha256": "754c93eecae1f2597ebdb7cfaceca1a4d689cb35df66bb10b14bd383f8477f1c"
+    },
+    {
+      "path": "voice/patches/330.bin",
+      "bytes": 145023,
+      "sha256": "881d8d416cce338738f84ab7e20e74e74c9d349a05af5684de91d4857ee464eb"
+    },
+    {
+      "path": "voice/patches/331.bin",
+      "bytes": 15806,
+      "sha256": "5c031f25ac36ccab68dc233b93eb9ae059221c97a5f77c03ccc28fd87212a070"
+    },
+    {
+      "path": "voice/patches/332.bin",
+      "bytes": 51171,
+      "sha256": "917b227acb6f643cf5069636e1983e77b6dc214b90ee62428d40e8ea75d2e94c"
+    },
+    {
+      "path": "voice/patches/333.bin",
+      "bytes": 165261,
+      "sha256": "11b8294b0425325c402a4f1c7a37dd832bd6c85ab018238f5ce3d25ab05b43b5"
+    },
+    {
+      "path": "voice/patches/334.bin",
+      "bytes": 114222,
+      "sha256": "40754462ecd0db9fc9252818b1bf3fd0481c914999e37fef7de5168e8f2bf2f0"
+    },
+    {
+      "path": "voice/patches/335.bin",
+      "bytes": 12396,
+      "sha256": "a2c68bcdb3c4ea573be3810d7c91efbead934265bc06e7494513a802cf3d8ff0"
+    },
+    {
+      "path": "voice/patches/336.bin",
+      "bytes": 37095,
+      "sha256": "3d9fda9c9456192e1aad36e73ecb7e028710d7e27d766cb8d66aa18dce2aab2b"
+    },
+    {
+      "path": "voice/patches/337.bin",
+      "bytes": 38473,
+      "sha256": "21f38ea1a9b98a88877bcc7fc0aeefa295a75a0664025e503bc0801a62eb4de4"
+    },
+    {
+      "path": "voice/patches/338.bin",
+      "bytes": 73601,
+      "sha256": "cf275f80d99dd5e9345874fecec3ed40a0cacee8376f73bf5db417eb7e3e69c9"
+    },
+    {
+      "path": "voice/patches/339.bin",
+      "bytes": 56082,
+      "sha256": "37903e079ea01c658a10c8ac4594bc1dec2d8e3c828efbad1b74338806097e8f"
+    },
+    {
+      "path": "voice/patches/340.bin",
+      "bytes": 51883,
+      "sha256": "f8ae70941ad51b6fe680c48433853de6110cf6de2ae722ad7c63bf983e753cd7"
+    },
+    {
+      "path": "voice/patches/341.bin",
+      "bytes": 24141,
+      "sha256": "49fa10a9d09e1cbe7da6eafa2e6ed931b4d2dc1860d5d46895f5ab41281f9261"
+    },
+    {
+      "path": "voice/patches/342.bin",
+      "bytes": 192781,
+      "sha256": "63388489e6578ee61921d2fddaaf2e7d1dfb744ed80d576c6b9ca8e25dca0e4f"
+    },
+    {
+      "path": "voice/patches/343.bin",
+      "bytes": 14784,
+      "sha256": "1c47a295da9a5e40d722fbdd587b53ed6ff18f612ef644525152e6bbe2932f8f"
+    },
+    {
+      "path": "voice/patches/345.bin",
+      "bytes": 26942,
+      "sha256": "70116fcca1c138bbe56ceb4f59656497056cca24e43d2dbd0ff5ca6409737aae"
+    },
+    {
+      "path": "voice/patches/346.bin",
+      "bytes": 21728,
+      "sha256": "8c6c8fc969bee132047498069dd16a52d4a3a8d4e0fba49237b29bf405175122"
+    },
+    {
+      "path": "voice/patches/347.bin",
+      "bytes": 32378,
+      "sha256": "6d3d0af0e7fddf1b862f432c64688eebb1e540f030c48a83f01663c319c50a6b"
+    },
+    {
+      "path": "voice/patches/349.bin",
+      "bytes": 103588,
+      "sha256": "f3addc958cdd91859862f1c7a33e74912b382f3c5b80dda8eed7c027d5efc87a"
+    },
+    {
+      "path": "voice/patches/350.bin",
+      "bytes": 26392,
+      "sha256": "93cc5e0920a9b7de286e9f9c9898a756718cc5258495a30420cb8d1c99c985b6"
+    },
+    {
+      "path": "voice/patches/352.bin",
+      "bytes": 93492,
+      "sha256": "c2ab4c46a0ebfa185e0278b1f2bd730ec83b46abe79a67e4de80a6c9b25ebd11"
+    },
+    {
+      "path": "voice/patches/353.bin",
+      "bytes": 19521,
+      "sha256": "0b07da6fd51cf783ec6c4d0a6714935d2a8decb208b11d07fd89e8399344f5ab"
+    },
+    {
+      "path": "voice/patches/354.bin",
+      "bytes": 62275,
+      "sha256": "b7fbf7b8bfe8b2beca51cb0086ade139eb0c3b730dd2f6bb329f290128d159ff"
+    },
+    {
+      "path": "voice/patches/355.bin",
+      "bytes": 126990,
+      "sha256": "27e420a99431663741fb672bf3ae0bee79ce7ea0afa0d59d281e8f4e7f9ad6eb"
+    },
+    {
+      "path": "voice/patches/356.bin",
+      "bytes": 54838,
+      "sha256": "51c037631d98419452d088348c467d25d1ad86d6ebe7efb4a3462ae5e9ce40aa"
+    },
+    {
+      "path": "voice/patches/357.bin",
+      "bytes": 104548,
+      "sha256": "86498c786efae322e1cdad6d1e9fae5518a545ebce8602ae4f5a3d01b1d4f772"
+    },
+    {
+      "path": "voice/patches/359.bin",
+      "bytes": 39782,
+      "sha256": "082c3a2f5b87542a937fc00842a1b070bad0ca1177494943fc65a38c7de8c788"
+    },
+    {
+      "path": "voice/patches/360.bin",
+      "bytes": 33230,
+      "sha256": "a552a4630e8cce4fc7d37070afa0503e48a2dc360215feee3e3a826cc6d9add4"
+    },
+    {
+      "path": "voice/patches/361.bin",
+      "bytes": 43315,
+      "sha256": "6c13810feb03887a47aeaf9bdbb2cf7472db290d9ca5e1253e664c930084bd29"
+    },
+    {
+      "path": "voice/patches/362.bin",
+      "bytes": 33902,
+      "sha256": "59b3d9649f7edc605e0feaf35de22a29cb1ea593a2da051a5074da78cf48ef3c"
+    },
+    {
+      "path": "voice/patches/363.bin",
+      "bytes": 76992,
+      "sha256": "f679ff2f4927ac83eb01fc5f6d9412977588e44e5815d342e5c3c50038b3b996"
+    },
+    {
+      "path": "voice/patches/364.bin",
+      "bytes": 48793,
+      "sha256": "d7c521219bf04f965d35b183b843ba9d9e8d446832ad1c5cb402e6a0f3a54631"
+    },
+    {
+      "path": "voice/patches/365.bin",
+      "bytes": 89188,
+      "sha256": "d31a2de1ccb8b6037ccc244147309e684b9cda942ae83633095608b475f0733a"
+    },
+    {
+      "path": "voice/patches/366.bin",
+      "bytes": 121968,
+      "sha256": "2058db4d754d7f2a5fd1239bb755948a504314408fdd988b1c1232cb00d59c25"
+    },
+    {
+      "path": "voice/patches/378.bin",
+      "bytes": 59897,
+      "sha256": "d8ec3d08575de722ae8c61b88bcf80a5815f0053c79f31f3f7991ffb5a2db016"
+    },
+    {
+      "path": "voice/patches/379.bin",
+      "bytes": 40542,
+      "sha256": "1b9c9ea16726c3788c62ad1374565562ac2c5e67a10dc722a180c6990be0732a"
+    }
+  ]
+}

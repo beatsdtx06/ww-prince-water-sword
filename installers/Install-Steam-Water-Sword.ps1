@@ -12,7 +12,10 @@ $stockHash = 'febbabb37d355ebbe51c4e8cd4172ad825870c759b529421f361a13339aa0941'
 $offset = 0x5E1380
 
 function Get-Sha256([string]$Path) {
-    return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant()
+    $hash = [Security.Cryptography.SHA256]::Create()
+    $stream = [IO.File]::OpenRead($Path)
+    try { return ([BitConverter]::ToString($hash.ComputeHash($stream))).Replace('-','').ToLowerInvariant() }
+    finally { $stream.Dispose(); $hash.Dispose() }
 }
 
 function Resolve-GamePath {

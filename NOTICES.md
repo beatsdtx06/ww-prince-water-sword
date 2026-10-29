@@ -1,9 +1,13 @@
 # Attribution and provenance
 
-Game assets and script material derive from Ubisoft's Prince of Persia games. Their underlying rights remain separate from the project code. This source-available mod does not assign an open-source license to Ubisoft content or third-party tools.
+Unofficial fan mod by beatsdtx06 for Prince of Persia: The Two Thrones. Not affiliated with or endorsed by Ubisoft, the voice actors, PoP Mod Manager or OpenJade developers.
 
-PoP Mod Manager and the JTMod ecosystem are by kaminoer. OpenJade is an external engine dependency for the OpenJade edition. None of their executables, DLLs or implementation source is bundled here.
+Game assets, scripts, dialogue and underlying voice performances derive from Ubisoft's Prince of Persia games. Their rights remain with their respective owners. This source-available mod does not assign an open-source license to Ubisoft content or third-party tools and makes no blanket legal-clearance claim. Use legally obtained game copies.
 
-The package builder is project-specific Python standard-library code. Earlier archive/LZO helpers with uncertain provenance were removed; the current builder serializes maintained delta records and verifies their hashes instead. Source is included for inspection and reproducibility; this is not a blanket open-source or legal-clearance claim for all assets.
+The Prince voice preview contains AI-converted audio guided by Warrior Within character-voice references while retaining The Two Thrones wording and timing. It is not a new recording by, or endorsement from, either original actor. The local conversion workflow used the separate Seed-VC project (Plachtaa/seed-vc); its code, weights and reference dataset are not bundled. The shipped payload is a partial 93-line preview, not a complete voice replacement.
 
-The 0.4.0 packages and repository publish the project under beatsdtx06.
+PoP Mod Manager and the JTMod ecosystem are by kaminoer. OpenJade is a separately installed engine dependency. Their executables, DLLs and implementation source are not included.
+
+The model-record source ZIP is retained from the 0.4.0 public release. Earlier uncertain-provenance archive/LZO helpers were already removed from that source release. Current release packaging uses Python standard-library code; player installation uses PowerShell.
+
+Only mod packages and bounded replacement voice payloads are distributed. No full game archive, sound bank, executable, original voice collection, private local backup, paid API key or AI model weight is included.
