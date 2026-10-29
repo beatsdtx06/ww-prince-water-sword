@@ -2,17 +2,16 @@
   "mods": [
     {
       "id": "ww-prince-model-sword-voice",
-      "name": "WW Prince - Model, Water Sword and Voice",
+      "name": "WW Prince - Model, Water Sword and Voice (OpenJade)",
       "author": "beatsdtx06",
-      "version": "0.5.0",
-      "description": "One JTMod for Steam and OpenJade 0.4.1. Apply, then run the included Finish-Setup.cmd inside the game folder. Model + New Game Water Sword + 93-line English AI voice preview. OpenJade retains enhanced damage and boss-only blue aura. Steam needs Large assets. Clean base required; replaces older separate editions.",
-      "file": "assets/WW-Prince-Model-Sword-Voice-0.5.0.jtmod",
+      "version": "0.5.1",
+      "description": "OpenJade 0.5.1 ONLY. WW Prince model, Water Sword from New Game, enhanced damage and boss-only blue aura, plus the approved 93-line English AI voice preview. Import and Apply in PoP Mod Manager 2.1.2, then launch. No setup scripts or extra installer. Disable older WW Prince packages; do not stack editions. Steam is not supported.",
+      "file": "assets/WW-Prince-Model-Sword-Voice-0.5.1.jtmod",
       "game": "T2T",
       "type": "mod",
-      "targets": "both",
-      "size": 43432217,
-      "sha256": "ec41456c55f272c357a342583d22c8ea2b360c95f2a3c630cc5a15ee8cdd5eb0",
-      "image": "assets/steam-gameplay.jpg"
+      "targets": "openjade",
+      "size": 11531685,
+      "sha256": "5cc760f951b17619b1a7b935c68bc2a2bcbeb48c6af3178df4f910e8037b0f71"
     }
   ]
 }

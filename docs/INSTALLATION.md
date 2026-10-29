@@ -1,29 +1,21 @@
 # Installation and recovery
 
-Download only the universal 0.5.0 JTMod. Apply it with PoP Mod Manager 2.1.2+, then close the manager and game and run `WWPrince-Model-Sword-Voice/Finish-Setup.cmd` in the game folder. Select the correct edition. Steam requires Large assets enabled first and the verified `POP3.EXE.popmm.bak` retained.
+For a supported OpenJade installation: extract the 0.5.1 ZIP, import its one JTMod, enable it, Apply, launch. No script or extra installer is used. Select **OpenJade → The Two Thrones**, not Classic.
 
-## Old installations and other mods
+## Upgrading from 0.5.0
 
-Restore/remove older separate model/sword packages before applying the universal one. Do not stack editions. Existing approved voice data is recognized without regeneration, provided its verified backup/receipt remains intact. Unknown sound banks, modified executables, other model stacks and different languages are refused, not overwritten.
+If you only imported/applied the old JTMod and did **not** run Finish Setup, disable that old package and enable 0.5.1 before applying. Do not enable both. Mod Manager owns and removes the old package's added helper files when changing its selection.
 
-OpenJade setup converts the manager-applied common model archive into the exact full-effects archive. Until the helper's Restore operation runs, Mod Manager may report the archive as externally changed. **Restore with the helper before changing or removing the Mod Manager selection.** Do not force reapply over modified data.
+If you previously **ran** an old helper, your game may contain changes outside Mod Manager's tracking. Preserve all existing backups and receipts. Restore those old helper-owned changes using the old release's documented recovery process before removing its files, or recover a verified original game installation separately. This is legacy recovery, not an installation requirement of 0.5.1. Do not force Apply over an externally modified archive.
 
-## Check and restore
+The original reported installation used import/apply only; the new native package removes the previously mandatory helper step. A full diagnosis of every possible crash or unrelated mod conflict is not claimed.
 
-`Manage-Mod.cmd` offers Install, Check and Restore. It defaults to its parent game folder. Advanced usage can pass `-Action Check -Edition Steam -GameDirectory "X:\Games\The Two Thrones"` directly to `Manage-Mod.ps1`.
+## Other mods
 
-Check verifies model/sword, voice and the required Steam executable state. A successful file check is not proof of all in-game dialogue playback. Restore reverses the helper changes first. Then use Mod Manager's Restore original, and disable Large assets on Steam.
+Disable old WW Prince/model/sword/voice editions. Test this mod by itself first if the game crashes. Other model replacements and modifications to English `001.sb0` can conflict. Save backups and manager backups should be retained. No saves are replaced by this package.
 
-Backups retained outside the added setup folder:
+## Uninstall
 
-- Voice: `Sound/WW-Prince-Voice-Backups/`, with the installer's receipt.
-- Steam interpreter: `WWPrinceWaterSwordBackup/POP3.EXE.before-interpreter-patch`.
-- OpenJade effects: `WWPrinceEffectsBackup/pop3.bf.before-openjade-effects`.
+Close the game and choose **Restore original** in Mod Manager. There is no new helper to run. The native package's model and sound archive changes participate in the manager's normal restore operation.
 
-Never delete backups while the mod is installed. No saves or unrelated files are intentionally removed.
-
-## Failure handling
-
-Helpers are individually guarded, **not one multi-file transaction**. If a later stage fails, an earlier component may already be installed or restored. Read the error, keep all backups, correct the stated issue and rerun. Known original/installed states are repeatable. Do not bypass hashes or replace backups with arbitrary files.
-
-If files are missing or changed, restore helper changes first where possible, then remove/reapply the same JTMod with Mod Manager. If an unexpected modified archive or damaged backup prevents that, retain everything and investigate; do not force an overwrite. Setup needs approximately 2 GB of free temporary/backup space in addition to Mod Manager's needs.
+On an unknown-bank error or unexpected external-change warning, stop and preserve the files/backups. Do not bypass hashes. Ensure the selected folder is the intended OpenJade game and the audio is the supported English version.

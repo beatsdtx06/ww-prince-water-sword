@@ -1,30 +1,22 @@
-# Build the single JTMod
+# Build the OpenJade-only package
 
-Player download: `assets/WW-Prince-Model-Sword-Voice-0.5.0.jtmod`. No ZIP or edition-specific player packages are produced.
+Players only need the release ZIP and Mod Manager. These instructions are for developers.
 
-With Python 3.11+ and a full Git clone:
+Use Python 3.11+ and a full clone with history. Extract the original English `sound/english/001.sb0` from your legally owned game using a compatible asset tool; do not use a modified bank.
 
 ```powershell
-python tools/package_release.py
-python tools/test_voice_installer.py
+python tools/package_release.py --bank "X:/Extracted/sound/english/001.sb0"
 python tools/test_release.py
 ```
 
-The deterministic packager reads the accepted Steam model/sword input from Git commit `649046bac415656de88d1198e4ae3b25013c057d`, path `WW-Prince-Water-Sword-Steam-Clean-Start-0.4.0.jtmod`, and verifies its exact SHA-256. Alternatively pass `--model-input PATH` to that exact historical file. Historical binaries are not duplicated among current player downloads.
+The bank SHA-256 must be `a83de99c058b688e07c944cb97cb1a1dbb2736eefd3486196865afff5db8a3a0`. The build rejects other inputs. It modifies only 93 stream/name references, adds a stream filename to the bank's extra table, and preserves the remaining bank data. The compact stream is made from the exact approved files in `voice/patches/`; no AI regeneration occurs.
 
-It re-encodes unchanged BF edits into JTMod v9, adds the allowlisted setup files, deduplicates raw payloads, and writes the format integrity trailer. It regenerates `package-manifest.json`, the single `targets: both` catalog entry, and `SHA256SUMS.txt`. Rebuild after editing any embedded file. These checksums detect accidental corruption, not malicious replacement of the manifest.
+The model input is read from commit `649046bac415656de88d1198e4ae3b25013c057d`, path `WW-Prince-Water-Sword-OpenJade-Clean-Start-0.4.0.jtmod`, SHA-256 `b579b7b61a8fb69d0785b636b1b8422918b9b495295d1a814d480aceca410bf0`. Alternatively supply that exact historical file using `--model-input`. No whole BF archive is shipped.
 
-`tools/jtmod.py` independently reads the produced subset, checks safe paths/integrity, and reconstructs a v3 model-only view for comparison and legacy CLI testing. Mod Manager 2.1.2 reads v9; the historical C++ CLI does not.
+The deterministic build emits `assets/WW-Prince-Model-Sword-Voice-0.5.1.jtmod`, the corresponding ZIP, `package-manifest.json`, an OpenJade-only `pmm_manifest.json` entry, and `SHA256SUMS.txt`. ZIP timestamps are fixed. JTMod v9 uses native stream-add operation 7 and guarded bank-replacement operation 3; no added game files, helper scripts or executable operations are emitted.
 
-`installers/openjade-effects.delta.gz` maps the exact accepted Steam-applied archive to the exact accepted OpenJade-applied archive using bounded copy/literal operations. It contains no complete BF archive. Rebuild it only from locally owned, hash-matching inputs:
+`tools/jtmod.py` independently reads the output and reconstructs its model-only v3 view. The historical `source/model-record-sources-0.4.0.zip` is retained for model reconstruction; its historical machine-specific paths need configuration. `source/voice-record-map.json` supplies the exact 93 row mappings.
 
-```powershell
-g++ -O2 -std=c++17 tools/make_delta.cpp -o make_delta.exe
-python tools/build_effects_delta.py STEAM-APPLIED.bf OPENJADE-APPLIED.bf --encoder ./make_delta.exe
-```
+`voice/manifest.json` describes the accepted historical in-place voice payload ranges for provenance; its whole-archive output hash is not the new native sound-archive hash. Current operation hashes are in `package-manifest.json`.
 
-The C++ encoder is development-only; neither it nor a compiler is included in the JTMod. Player setup uses built-in PowerShell/.NET gzip decoding and verifies the complete output before atomic replacement. The copy/literal instructions are portable little-endian.
-
-`source/model-record-sources-0.4.0.zip` preserves the previous public reconstruction source, including historical machine-specific paths that developers must configure. Current runtime scripts have no private workstation paths. `voice/` contains the complete approved 93 payloads and reversible installer; private reference recordings, inference environments and AI weights are excluded. Regeneration of identical AI audio is not claimed.
-
-`tools/test_release.py --help` lists optional real-archive inputs for disposable integration tests. No installed game is modified by these tests. `docs/TESTS.md` records the scope and limits.
+Historical installers are recoverable from Git/release 0.5.0, but are removed from the current build and player download.

@@ -1,13 +1,11 @@
 # Verification scope
 
-The universal JTMod uses the accepted Steam 0.4.0 BF edits unchanged. OpenJade Finish Setup reconstructs the accepted OpenJade 0.4.0 full-effects BF byte-for-byte. The approved 93 voice payloads and final sound-bank hash are unchanged. Historical component evidence is retained in `model-verification-0.4.0.json`.
+The package preserves the accepted OpenJade 0.4.0 model/sword/effects records exactly and all 93 approved voice payloads exactly. Historical model behavior evidence is retained in `model-verification-0.4.0.json`; it is not a new campaign test.
 
-Automated checks cover JTMod integrity, one catalog entry, safe embedded paths, every embedded file hash, all 93 payloads, exclusion of held clips, absence of full game archives/executables/weights and private paths in current runtime text, and deterministic rebuilding.
+Automated release checks cover JTMod integrity, the two native audio operations, original-bank guard, exact accepted BF records, all 93 clip hashes and mappings, held-clip exclusion, one OpenJade-only catalog entry, ZIP contents and hashes, no setup/game-file/executable operations, and deterministic rebuilding.
 
-Real-archive-copy integration checks cover both editions: extracted setup install/check/repeat/restore; exact expected BF/voice/executable results; unchanged FAT; unchanged voice bytes outside the 93 patch ranges; wrong model rejection; corrupted setup payload rejection. The new OpenJade delta is output-hash-checked before replacing the archive and retains a verified baseline backup. Standalone voice-installer safety tests cover 12 synthetic failure/restore cases.
+Private real-manager evidence covers importing and applying the native package, exact modded BF and per-sound-entry comparisons, all 93 full audio decodes, and a GUI Restore original followed by Apply. Original `pop3.bf`, `soundlocal.big` and `soundlocal.fat` hashes were restored exactly. OpenJade 0.5.1 reached gameplay with the WW Prince and Water Sword in the native test copy. Earlier notes used stale Windows version metadata for that same engine binary; see compatibility details.
 
-Mod Manager 2.1.2 accepted the v9 added-file format in a private import probe. Final import/application evidence and actual automated run results are recorded separately in `release-verification.json` at the repository root, not recursively embedded in the artifact it describes.
+Current final-artifact checks and their precise limits are recorded in `release-verification.json`. A full campaign, every line's subjective playback, every boss encounter, arbitrary mod combinations, other languages and other engine revisions are not claimed verified. The Steam engine is explicitly outside release scope.
 
-These are archive/installer checks, not a new full campaign. All 93 lines and every save state have not been played through. A copied Steam installation's launcher refused to start outside its normal installation location; no unsupported full-OpenJade-on-Steam behavior is shipped. Instead, the exact previously accepted edition-specific archive states are retained. Unknown revisions, languages, overlapping mods and other OpenJade versions are not claimed compatible.
-
-The release test suite changes disposable copies only. Existing installed game archives, mod selections and saves are not altered.
+Tests use disposable copies and do not overwrite the user's installed games or saves. Release validation does not require or install an API key, AI runtime, custom launcher, or player-side helper.

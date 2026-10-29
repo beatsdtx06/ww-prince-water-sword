@@ -13,4 +13,4 @@ Held clips did not satisfy the current codec-quality gate (>20 dB reconstruction
 
 The conversion preserves The Two Thrones lines and timing, using situation-matched Warrior Within voice references to guide identity and tone. It is AI-converted audio, not newly recorded dialogue by the original actor. No actor endorsement or authorization is claimed.
 
-The voice installer replaces only the specified ranges in the English soundlocal.big and never changes soundlocal.fat. Unknown banks or overlapping sound mods are refused. Both editions use the same payload and sound-bank hashes.
+Version 0.5.1 is OpenJade-only. Mod Manager adds a compact `wwprince.ls0` stream and replaces the supported English `001.sb0` bank to redirect the 93 selected records. The FAT and BIG layout change; the original external stream remains intact on a clean installation. Unknown original bank hashes are rejected. No voice installer is required. Historical in-place range metadata in `voice/manifest.json` is provenance, not the new archive layout.

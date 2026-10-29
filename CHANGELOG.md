@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.1 - 2026-10-29
+
+- OpenJade-only release; dropped original Steam-engine support as requested.
+- Replaced the helper-based workflow with native Mod Manager operations: extract ZIP, import one JTMod, Apply, launch.
+- Included the accepted full OpenJade model/sword/effects records directly, retaining enhanced damage and boss-only blue aura.
+- Kept all 93 approved voice payloads byte-for-byte; added a compact voice stream and guarded bank redirection.
+- Verified native Apply, exact Restore original, and reapply in a disposable copy.
+- Removed obsolete helper scripts, Steam installers, delta tools and old player binary from the current repository tree. They remain recoverable in Git/release history.
+- Added a clean player ZIP, OpenJade-only catalog targeting, native operation manifest and revised installation/compatibility documentation.
+
 ## 0.5.0 - 2026-10-29
 
 - Combined the WW Prince model, New Game Water Sword and approved 93-line Prince voice preview into exactly one universal JTMod for Steam and OpenJade.

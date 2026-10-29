@@ -8,6 +8,6 @@ The Prince voice preview contains AI-converted audio guided by Warrior Within ch
 
 PoP Mod Manager and the JTMod ecosystem are by kaminoer. OpenJade is a separately installed engine dependency. Their executables, DLLs and implementation source are not included.
 
-The model-record source ZIP is retained from the 0.4.0 public release. Earlier uncertain-provenance archive/LZO helpers were already removed from that source release. Current release packaging uses Python standard-library code; player installation uses PowerShell.
+The model-record source ZIP is retained from the 0.4.0 public release. Earlier uncertain-provenance archive/LZO helpers were already removed from that source release. Current release packaging uses Python standard-library code; player installation uses only PoP Mod Manager's native archive operations.
 
-Only mod packages and bounded replacement voice payloads are distributed. No full game archive, sound bank, executable, original voice collection, private local backup, paid API key or AI model weight is included.
+The package includes model record edits, a modified English 001.sb0 routing bank (with unrelated records/internal audio preserved), and a compact stream of 93 approved converted clips. No full BF/BIG game archive, original external voice collection, executable, private local backup, API credential or AI model weight is included. The replacement bank is required by the native manager format; its presence is not a license grant for the underlying game content.

@@ -1,141 +1,119 @@
-"""Check release integrity; optional real-game COPY roundtrip (never edits inputs).
-
-python tools/test_release.py --base-sound ORIGINAL.big --fat ORIGINAL.fat \
-    --steam-archive APPLIED-STEAM.bf --openjade-archive APPLIED-OPENJADE.bf \
-    --manager-exe LARGE-ASSETS-POP3.EXE --stock-exe STOCK-POP3.EXE
-"""
+"""Independent structural/content checks for the native OpenJade release."""
 import argparse
 import hashlib
 import json
-from pathlib import Path
-import shutil
+import struct
 import subprocess
 import tempfile
-from jtmod import read_v9, Reader, unseal, blob, u32
-from package_release import PREFIX, MODEL_COMMIT, MODEL_FILE, build
+import zipfile
+from pathlib import Path
+from jtmod import Reader, read_v9, unseal
+from package_release import NAME, MODEL_COMMIT, MODEL_FILE, MODEL_SHA, BANK_SHA, BANK_OUT_SHA, STREAM_SHA, audio
 
-ROOT = Path(__file__).resolve().parents[1]
-SHELL = shutil.which("powershell.exe")
-def sha(path):
-    with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+ROOT=Path(__file__).resolve().parents[1]
+def sha(data):return hashlib.sha256(data).hexdigest()
 
-def run(script, *args, expect=0, contains=None):
-    proc = subprocess.run([SHELL, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), *args],
-                          capture_output=True, text=True)
-    assert proc.returncode == expect, proc.stdout + proc.stderr
-    if contains:
-        assert ' '.join(contains.split()) in ' '.join((proc.stdout + proc.stderr).split()), proc.stdout + proc.stderr
-    return proc
+def model_body(data):
+    r=Reader(unseal(data));assert r.take(8)==b'JADEJTM1' and r.u32()==3 and r.u32()==0
+    game,archive,base=r.blob(),r.blob(),r.take(40)
+    for _ in range(7):r.blob()
+    keys=r.take(r.u32()*4)
+    return game,archive,base,keys,r.data[r.pos:]
+
+def sound_entries(folder,stem):
+    fat=(folder/(stem+'.fat')).read_bytes();big=(folder/(stem+'.big')).read_bytes()
+    out={};pos=0
+    while pos<len(fat):
+        prev,offset,size,flags,length=struct.unpack_from('<5I',fat,pos)
+        name=fat[pos+20:pos+20+length].rstrip(b'\0').decode().replace('\\','/').lower()
+        assert name not in out and offset+size<=len(big)
+        out[name]=big[offset:offset+size];pos+=20+length
+    assert pos==len(fat)
+    return out
 
 def main():
-    parser = argparse.ArgumentParser()
-    for name in ("base-sound", "fat", "steam-archive", "openjade-archive", "manager-exe", "stock-exe"):
-        parser.add_argument("--" + name, type=Path)
-    args = parser.parse_args()
-    manifest = json.loads((ROOT / "package-manifest.json").read_text())
-    for item in manifest["files"]:
-        file = ROOT / item["path"]
-        assert file.stat().st_size == item["bytes"] and sha(file) == item["sha256"], item["path"]
-    for line in (ROOT / "SHA256SUMS.txt").read_text().splitlines():
-        digest, path = line.split("  ", 1)
-        assert sha(ROOT / path) == digest
-    archive = ROOT / "assets/WW-Prince-Model-Sword-Voice-0.5.0.jtmod"
-    decoded=read_v9(archive.read_bytes())
+    p=argparse.ArgumentParser()
+    p.add_argument('--bank',type=Path)
+    p.add_argument('--game',type=Path)
+    p.add_argument('--banks',type=Path,help='Extracted original bank directory with bank-index.json')
+    p.add_argument('--decoder',type=Path)
+    p.add_argument('--report',type=Path)
+    args=p.parse_args()
+    artifact=ROOT/'assets'/(NAME+'.jtmod');data=artifact.read_bytes();decoded=read_v9(data)
     model=subprocess.check_output(['git','show',MODEL_COMMIT+':'+MODEL_FILE],cwd=ROOT)
-    r=Reader(unseal(model));r.take(16);r.blob();r.blob();base=r.take(40)
-    for _ in range(7):r.blob()
-    r.take(r.u32()*4);count=r.u32()
-    assert base==decoded['base'] and count==decoded['binCount']
-    assert r.take(len(r.data)-r.pos)==b''.join(decoded['bins']), 'Native BF edits changed'
-    assert build(model,{k.removeprefix(PREFIX):v for k,v in decoded['files'].items()})==archive.read_bytes()
+    assert sha(model)==MODEL_SHA
+    assert model_body(decoded['modelV3'])==model_body(model), 'Accepted model/effects records changed'
+    assert decoded['metadata'][2]==b'0.5.1' and b'OpenJade' in decoded['metadata'][0]
+    assert [o['mode'] for o in decoded['operations']]==[7,3]
+    assert decoded['operations'][1]['originalSha256']==BANK_SHA
+    assert set(decoded['files'])=={'sound/english/001.sb0','sound/english/wwprince.ls0'}
+    bank=decoded['files']['sound/english/001.sb0'];stream=decoded['files']['sound/english/wwprince.ls0']
+    assert sha(bank)==BANK_OUT_SHA and sha(stream)==STREAM_SHA
+    records=json.loads((ROOT/'source/voice-record-map.json').read_text())['records']
+    patches=json.loads((ROOT/'voice/manifest.json').read_text())['patches']
+    assert len(records)==len(patches)==93
+    held={259,275,280,289,300,304,307,314,316,318,320,321,323,344,348,351,358,257,258,*range(367,378)}
+    assert not held.intersection(p['index'] for p in patches)
+    version,n1,n2,n3,extra_size=struct.unpack_from('<5I',bank)
+    sec2=28+n1*0x68;extra=sec2+n2*0x78;cursor=0
+    for row,patch in zip(records,patches):
+        assert row['index']==patch['index'] and row['streamOffset']==cursor
+        pos=sec2+row['row']*0x78
+        offset=struct.unpack_from('<I',bank,pos+0x10)[0]
+        filename=struct.unpack_from('<I',bank,pos+0x64)[0]
+        assert offset==cursor and bank[extra+filename:].split(b'\0',1)[0]==b'WWPRINCE.LS0'
+        content=stream[cursor:cursor+patch['length']]
+        assert sha(content)==patch['sha256'] and content==(ROOT/'voice'/patch['file']).read_bytes()
+        cursor+=patch['length']
+    assert cursor==len(stream)
+    if args.bank:
+        original=args.bank.read_bytes()
+        assert audio(original,records,patches)==(bank,stream)
+        corrupt=bytearray(original);corrupt[-1]^=1
+        try:audio(corrupt,records,patches)
+        except AssertionError:pass
+        else:raise AssertionError('Wrong bank accepted')
+    tampered=bytearray(data);tampered[100]^=1
+    try:read_v9(tampered)
+    except AssertionError:pass
+    else:raise AssertionError('Corrupt package accepted')
     catalog=json.loads((ROOT/'pmm_manifest.json').read_text())['mods']
-    assert len(catalog)==1 and catalog[0]['targets']=='both' and catalog[0]['sha256']==sha(archive)
-    with tempfile.TemporaryDirectory(prefix="ww-bundle-test-") as tmp:
-        scratch = Path(tmp)
-        names=list(decoded['files'])
-        assert len(names)==len(manifest['files'])+1
-        assert all(n.startswith(PREFIX) for n in names)
-        assert not any(n.endswith(('.exe','.dll','.big','.bf','.wav','.pt','.pth')) for n in names)
-        for name,data in decoded['files'].items():
-            file=scratch/name;file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(data)
-        package = scratch / PREFIX
-        for item in manifest["files"]:
-            assert sha(package / item["path"]) == item["sha256"]
-        voice = json.loads((package / "voice/manifest.json").read_text())
-        assert len(voice["patches"]) == 93 and len(voice["heldSpokenIndices"]) == 17
-        assert not set(voice["heldSpokenIndices"]) & {p["index"] for p in voice["patches"]}
-        for path in package.rglob("*"):
-            if path.is_file() and path.suffix in {".md", ".json", ".ps1", ".cmd", ".txt"}:
-                content = path.read_text(encoding="utf-8-sig")
-                assert "C:\\Users\\" not in content and "C:/Users/" not in content
-                assert "sk-proj-" not in content
-        print("PASS: single JTMod integrity/inventory, unchanged BF edits, deterministic encoding, all hashes, 93 payloads, held exclusion, private-path/credential-marker scan", flush=True)
-        if not any(vars(args).values()):
-            return
-        assert all(vars(args).values()), "Supply all six real-archive inputs together."
-        assert sha(args.base_sound) == voice["baseSha256"]
-        assert sha(args.fat) == voice["fatSha256"]
-        for edition, model in (("Steam", args.steam_archive), ("OpenJade", args.openjade_archive)):
-            game = scratch / edition
-            (game / "Sound").mkdir(parents=True)
-            shutil.copy2(args.base_sound, game / "Sound/soundlocal.big")
-            shutil.copy2(args.fat, game / "Sound/soundlocal.fat")
-            shutil.copy2(args.steam_archive, game / "pop3.bf")
-            installed_package=game/PREFIX
-            shutil.copytree(package,installed_package)
-            if edition == "Steam":
-                shutil.copy2(args.manager_exe, game / "POP3.EXE")
-                shutil.copy2(args.stock_exe, game / "POP3.EXE.popmm.bak")
-            launcher = installed_package / "Manage-Mod.ps1"
-            parameters = ("-Edition", edition)
-            run(launcher, "-Action", "Check", *parameters, expect=2, contains="not fully installed")
-            run(launcher, "-Action", "Install", *parameters, contains="93-line voice preview installed")
-            run(launcher, "-Action", "Check", *parameters, contains="All three components match")
-            assert sha(game/'pop3.bf')==sha(model)
-            assert sha(game / "Sound/soundlocal.big") == voice["patchedSha256"]
-            original = args.base_sound.read_bytes()
-            patched = (game / "Sound/soundlocal.big").read_bytes()
-            cursor = 0
-            for patch in sorted(voice["patches"], key=lambda p:p["start"]):
-                start, end = patch["start"], patch["start"] + patch["length"]
-                assert original[cursor:start] == patched[cursor:start]
-                assert patched[start:end] == (package / "voice" / patch["file"]).read_bytes()
-                cursor = end
-            assert original[cursor:] == patched[cursor:]
-            run(launcher, "-Action", "Install", *parameters)
-            run(launcher, "-Action", "Restore", *parameters)
-            run(launcher, "-Action", "Restore", *parameters)
-            assert sha(game / "Sound/soundlocal.big") == voice["baseSha256"]
-            assert sha(game / "Sound/soundlocal.fat") == voice["fatSha256"]
-            assert sha(game / "pop3.bf") == sha(args.steam_archive)
-            if edition == "Steam":
-                assert sha(game / "POP3.EXE") == sha(args.manager_exe)
-            else:
-                helper=installed_package/'installers/Manage-OpenJade-Effects.ps1'
-                backup=game/'WWPrinceEffectsBackup/pop3.bf.before-openjade-effects'
-                backup.write_bytes(b'corrupt test backup')
-                run(helper,'-Action','Install','-GameDirectory',str(game),expect=1,contains='Existing effects backup does not match')
-                assert sha(game/'pop3.bf')==sha(args.steam_archive)
-                shutil.copy2(args.steam_archive,backup)
-                delta=installed_package/'installers/openjade-effects.delta.gz'
-                saved=delta.read_bytes();delta.write_bytes(b'bad gzip fixture')
-                run(helper,'-Action','Install','-GameDirectory',str(game),expect=1)
-                assert sha(game/'pop3.bf')==sha(args.steam_archive)
-                assert sha(backup)==sha(args.steam_archive)
-                assert not (backup.parent/'pop3.bf.effects.tmp').exists()
-                delta.write_bytes(saved)
-                print('PASS: OpenJade corrupt backup/delta refused without changing archive',flush=True)
-            # Refuse the wrong model without touching the voice archive.
-            (game / "pop3.bf").write_bytes(b"unsupported model fixture")
-            run(launcher, "-Action", "Install", *parameters, expect=1, contains="Apply the universal")
-            assert sha(game / "Sound/soundlocal.big") == voice["baseSha256"]
-            print(f"PASS: {edition} extracted-bundle install/check/repeat/restore, unchanged outside ranges, wrong-model refusal", flush=True)
-        # Package tampering is detected before touching any game component.
-        (package / "voice/patches/270.bin").write_bytes(b"corrupt")
-        run(package / "Manage-Mod.ps1", "-Action", "Install", "-Edition", "OpenJade",
-            "-GameDirectory", str(scratch / "OpenJade"), expect=1, contains="Changed bundle file")
-        print("PASS: corrupted bundle refused before installation", flush=True)
+    assert len(catalog)==1 and catalog[0]['targets']=='openjade'
+    assert catalog[0]['sha256']==sha(data) and catalog[0]['size']==len(data)
+    manifest=json.loads((ROOT/'package-manifest.json').read_text())
+    assert manifest['jtmod']['sha256']==sha(data) and not manifest['scriptsRequired']
+    assert manifest['modelBins']==decoded['binCount']
+    with zipfile.ZipFile(ROOT/'assets'/(NAME+'.zip')) as z:
+        assert set(z.namelist())=={artifact.name,'README.txt','NOTICES.txt','SHA256SUMS.txt'}
+        assert z.read(artifact.name)==data and z.testzip() is None
+        assert z.read('SHA256SUMS.txt').decode()==sha(data)+'  '+artifact.name+'\n'
+    for line in (ROOT/'SHA256SUMS.txt').read_text().splitlines():
+        expected,path=line.split('  ');assert sha((ROOT/path).read_bytes())==expected
+    report={'status':'NATIVE_RELEASE_STRUCTURE_PASS','version':'0.5.1','target':'openjade',
+        'packageSha256':sha(data),'modelRecordsExact':True,'approvedClipsExact':93,
+        'nativeAudioOperations':[7,3],'setupScriptsRequired':False,'executableFiles':0,
+        'zipSingleJtmod':True,'installedCopyChecked':False,'decodedAllClips':False}
+    if args.game:
+        assert args.banks,'--game requires --banks for independent original asset comparisons'
+        assert sha((args.game/'pop3.bf').read_bytes())==manifest['modelAppliedSha256']
+        installed={}
+        for stem in ('sound','soundlocal'):installed.update(sound_entries(args.game/'Sound',stem))
+        index=json.loads((args.banks/'bank-index.json').read_text())
+        assert set(installed)=={r['name'].lower() for r in index}|{'sound/english/wwprince.ls0'}
+        for row in index:
+            name=row['name'].lower()
+            if name!='sound/english/001.sb0':assert sha(installed[name])==row['sha256'],name
+        for name,content in decoded['files'].items():assert installed[name]==content
+        assert not (args.game/'WWPrince-Model-Sword-Voice').exists()
+        report.update(installedCopyChecked=True,otherSoundAssetsExact=len(index)-1)
+    if args.decoder:
+        with tempfile.TemporaryDirectory(prefix='ww-native-decode-') as tmp:
+            stage=Path(tmp);(stage/'001.sb0').write_bytes(bank);(stage/'WWPRINCE.LS0').write_bytes(stream)
+            for record in records:
+                decoded_audio=subprocess.run([str(args.decoder),'-p','-s',str(record['index']),str(stage/'001.sb0')],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)
+                assert decoded_audio.stdout[:4]==b'RIFF' and len(decoded_audio.stdout)>44,record['index']
+            report['decodedAllClips']=True
+    if args.report:args.report.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(report))
 
-if __name__ == "__main__":
-    main()
+if __name__=='__main__':main()

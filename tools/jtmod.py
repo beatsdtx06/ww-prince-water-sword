@@ -35,12 +35,17 @@ def read_v9(data):
         elif mode==3:entry+=blob(r.blob())+r.take(4)+blob(payloads[r.u32()])
         else:raise ValueError('Unexpected bin operation')
         bins.append(entry)
-    files={}
+    files={};operations=[]
     for _ in range(r.u32()):
-        assert r.take(1)==b'\x08';path=r.blob().decode('utf-8')
+        mode=r.take(1)[0];assert mode in (3,7,8);path=r.blob().decode('utf-8')
         assert not PurePosixPath(path).is_absolute() and '..' not in PurePosixPath(path).parts and ':' not in path and '\\' not in path and path not in files
-        assert r.blob()==r.blob()==r.blob()==b''
+        external_archive,alias,original=r.blob(),r.blob(),r.blob()
+        if mode==8:assert external_archive==alias==original==b''
+        else:
+            assert external_archive==b'soundlocal' and alias==b''
+            assert (mode==7 and original==b'') or (mode==3 and len(original)==64)
         files[path]=payloads[r.u32()]
+        operations.append({'mode':mode,'path':path,'archive':external_archive.decode(),'originalSha256':original.decode()})
     assert r.pos==len(r.data)
     model=b'JADEJTM1'+u32(3)+u32(0)+blob(game)+blob(archive)+base+b''.join(blob(v) for v in meta)+blob(image)+u32(len(keys)//4)+keys+u32(count)+b''.join(bins)
-    return {'files':files,'binCount':count,'modelV3':seal(model),'base':base,'metadata':meta,'bins':bins}
+    return {'files':files,'operations':operations,'binCount':count,'modelV3':seal(model),'base':base,'metadata':meta,'bins':bins,'keys':keys}

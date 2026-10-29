@@ -1,41 +1,19 @@
-# Exact supported files
+# Supported OpenJade files
 
-Model/sword input: stock pop3.bf, 497424384 bytes.
+OpenJade 0.5.1 with PoP Mod Manager 2.1.2, The Two Thrones PC English assets. Original Steam engine is not supported by this release. No executable changes are performed.
 
-`00134ea93ccf27f29ede40d3521439ca8f8c0d38bc02fdfd0d18042e7929b600`
+The tested engine identifies itself in-game as OpenJade 0.5.1, commit `3ce8d00b`. Its executable SHA-256 is `44e71fa278d790e61d70203d1555c7a2b7c556a6a64098978cf01b155c5f27d4`. Earlier notes incorrectly called this same binary 0.4.1 based on Windows file metadata; the runtime version is authoritative.
 
-After the Steam JTMod:
+| Asset | SHA-256 |
+| --- | --- |
+| Original `pop3.bf`, 497424384 bytes | `00134ea93ccf27f29ede40d3521439ca8f8c0d38bc02fdfd0d18042e7929b600` |
+| Mod alone applied `pop3.bf`, 603050280 bytes | `3d4b138b0babfe026669db584b5bed29b25ddca94f23172cfa6c30f288c3409d` |
+| Original English `001.sb0` | `a83de99c058b688e07c944cb97cb1a1dbb2736eefd3486196865afff5db8a3a0` |
+| Native redirected `001.sb0` | `efbe9ce1441782f0d23804ef79619755426dd1072b78dd8fbfb75491a2ed24d3` |
+| Added `wwprince.ls0` | `8b2db59b6765d6e0a3019551496991320335b7e67a37558bcbefaefd2ed16315` |
+| Original `soundlocal.big`, 92169193 bytes | `7e810ba92128a00d505d1a89cb84adb97553cdc6bf5a8e4e4cf99b5487f9a627` |
+| Original `soundlocal.fat` | `ac47195fedeb6edb35ec608022f7713a13908b41a4f948a4587beb2ee26fa972` |
 
-`cb9424bf647d6a3eac08ab139dbc68ae4024378ef43c43f00f18c8ab8a1c4644`
+Unlike the old helper, native installation changes sound archive layout and its FAT. All approved clip bytes remain identical; non-target entries and the original `stream.ls0` remain unchanged on a clean original installation. Restore original returns both original sound archives exactly in the tested fixture.
 
-After the OpenJade JTMod:
-
-`3d4b138b0babfe026669db584b5bed29b25ddca94f23172cfa6c30f288c3409d`
-
-English Sound/soundlocal.big: 92169193 bytes, original:
-
-`7e810ba92128a00d505d1a89cb84adb97553cdc6bf5a8e4e4cf99b5487f9a627`
-
-With the approved 93-line voice patch:
-
-`67459b29e5cb349d60b8165822e79bfd9a078ea98213ee9e1677d93f765e0dc8`
-
-Sound/soundlocal.fat (never modified):
-
-`ac47195fedeb6edb35ec608022f7713a13908b41a4f948a4587beb2ee26fa972`
-
-Steam POP3.EXE stock:
-
-`febbabb37d355ebbe51c4e8cd4172ad825870c759b529421f361a13339aa0941`
-
-After Mod Manager Large assets:
-
-`f42f721f1394894b87b4584ca1e9bc0c2be7af71cf39a1a3548925fa9eab7cfa`
-
-After the interpreter helper:
-
-`f6dd6820334918d915c8d6b70a60b799d3e85b3be9c5a3245d240768be734208`
-
-The helper changes the known 32-bit interpreter flag at offset 0x5E1380 from 1 to 0 only on the exact supported executable. OpenJade does not need this patch. Do not apply it to OpenJade.
-
-Other language banks, executables, archive revisions, overlapping mods and engines other than the tested OpenJade 0.4.1 are not claimed compatible. Do not bypass hash checks to force installation.
+Other languages, unknown bank revisions, arbitrary overlapping sound/model mods and other OpenJade versions are not claimed compatible. Never force past a hash or integrity error. Mod Manager's catalog marks this package `targets: openjade`; manual import is not an engine-compatibility guarantee.
