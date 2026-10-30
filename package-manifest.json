@@ -339,22 +339,6 @@
     "downloadUrl": "https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.6.0/WW-Prince-Model-Sword-Voice-0.6.0.jtmod"
   },
   "modelPayloadSha256": "331a2727d051052e977a5b65b42fc3adcd9c36858e5243c948869905fc8fc7d4",
-  "playerDocs": {
-    "README.txt": {
-      "file": "docs/player/README.txt",
-      "sha256": "14a6fac6407327ecd0557087800328a26cf4987e072157ba9889a18afa10c0de"
-    },
-    "NOTICES.txt": {
-      "file": "docs/player/NOTICES.txt",
-      "sha256": "588092010fb0fe4bb77123f3129672c423e85d1f6fe22e2533ef418185a08634"
-    }
-  },
-  "zip": {
-    "file": "WW-Prince-Model-Sword-Voice-0.6.0.zip",
-    "bytes": 119580208,
-    "sha256": "ab8d755dcbe1c193c11c868f7fff0525f9e3e9eb5ff5ddbbef83431da17b6f20",
-    "downloadUrl": "https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.6.0/WW-Prince-Model-Sword-Voice-0.6.0.zip"
-  },
   "binaryDistribution": "github-release-assets-only",
   "installationMode": "manual-import-downloaded-jtmod"
 }

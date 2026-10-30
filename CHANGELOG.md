@@ -1,44 +1,33 @@
 # Changelog
 
-## 0.6.0 â€” OpenJade combined expanded voice release
+## Unreleased (repository only, mod unchanged)
 
-- Retains the accepted WW Prince model, Water Sword from New Game, enhanced damage and boss-only blue aura.
-- Expands isolated spoken coverage from 93 to 110 and includes 80 mapped Prince turns across 38 in-engine scene tracks.
-- Adds 26 original WW effort resources and two mapped death/fall sounds; corrects four hurt mappings while retaining accepted short attack sounds.
-- Uses complete PCM bank headers and native Mod Manager archive operations; no Finish Setup helper.
-- Keeps pre-rendered videos, Dark Prince and other speakers unchanged; ambiguous extra nonverbals remain excluded.
-- Replaces the old 93-line public synthesizer with a non-overwriting, hash-validating repackager for the existing approved asset.
-- Documents offline, installation and scoped runtime evidence separately; no full-campaign playthrough claim.
+- Docs reduced to README, Installation, Details and Notices.
+- Removed old player ZIP docs and tooling; the JTMod is the only release file.
+- `tools/verify.py` replaces the old packaging and test scripts.
+
+## 0.6.0 - 2026-10-29
+
+- Voice expanded: 110 dialogue clips (was 93) and 80 Prince lines across 38 in-engine scenes.
+- Added 26 original WW efforts and 2 death/fall sounds; fixed 4 hurt sounds.
+- Keeps the WW Prince model, Water Sword from New Game, enhanced damage and boss-only blue aura.
+- JTMod only: native Mod Manager install, no Finish Setup helper, no player ZIP.
 
 ## 0.5.1 - 2026-10-29
 
-- OpenJade-only release; dropped original Steam-engine support as requested.
-- Replaced the helper-based workflow with native Mod Manager operations: extract ZIP, import one JTMod, Apply, launch.
-- Included the accepted full OpenJade model/sword/effects records directly, retaining enhanced damage and boss-only blue aura.
-- Kept all 93 approved voice payloads byte-for-byte; added a compact voice stream and guarded bank redirection.
-- Verified native Apply, exact Restore original, and reapply in a disposable copy.
-- Removed obsolete helper scripts, Steam installers, delta tools and old player binary from the current repository tree. They remain recoverable in Git/release history.
-- Added a clean player ZIP, OpenJade-only catalog targeting, native operation manifest and revised installation/compatibility documentation.
+- OpenJade only; Steam engine support dropped.
+- Native Mod Manager install (import, Apply, launch); helper scripts removed.
+- Exact Restore original and reapply verified.
 
 ## 0.5.0 - 2026-10-29
 
-- Combined the WW Prince model, New Game Water Sword and approved 93-line Prince voice preview into exactly one universal JTMod for Steam and OpenJade.
-- Preserved each edition's accepted 0.4.0 model/sword output and all approved voice bytes. OpenJade keeps enhanced damage and boss-only blue aura.
-- Embedded a Finish Setup launcher, reversible edition-specific helpers, voice patches and complete file manifest using JTMod v9 added files. Finish Setup remains required after Apply.
-- Organized assets, shared voice patches, installers, documentation, source and tests.
-- Removed obsolete root launchers from the current release; previous files remain recoverable in Git history.
-- Excluded original archives, backups, local paths in current voice metadata, failed voice experiments, AI weights and development clutter from the player download.
-- Documented every required file, partial voice coverage, compatibility, installation order and recovery.
+- Model, Water Sword and 93-line voice preview combined into one JTMod for Steam and OpenJade.
+- Needed a Finish Setup helper after Apply.
 
 ## 0.4.0 - 2026-10-29
 
-- Fixed clean installations starting with the Warrior Within Prince model but no Water Sword.
-- Added the guarded clean-start Water Sword grant to the Steam package's 12 Prince frame providers.
-- Added a reversible, exact-hash-checked Steam interpreter patch so the original executable runs the package scripts.
-- Published the OpenJade clean-start package that equips the Water Sword from New Game.
-- Updated install, removal, build and checksum documentation.
+- Fixed new games starting with the WW model but no Water Sword (Steam and OpenJade).
 
-## 0.3.0 release candidates
+## 0.3.0
 
-- Published separate Steam visual and OpenJade full editions.
-- The Steam edition only reskinned a primary weapon once normal story progression supplied one; this limitation is corrected in 0.4.0.
+- Separate Steam visual and OpenJade full editions.
