@@ -4,7 +4,8 @@
 
 - Warrior Within Prince model
 - Water Sword from New Game, enhanced damage, boss-only blue aura
-- WW-style English Prince dialogue (110 clips, 80 scene lines) and 28 original WW grunts/efforts
+- English Prince dialogue in the WW voice (110 clips, 80 scene lines), made with AI voice conversion
+- 28 original WW grunts/efforts (real recordings, not AI)
 
 **[Download WW-Prince-Model-Sword-Voice-0.6.0.jtmod](https://github.com/beatsdtx06/ww-prince-water-sword/releases/download/v0.6.0/WW-Prince-Model-Sword-Voice-0.6.0.jtmod)**
 
